@@ -160,9 +160,9 @@ class _RegisterSalesPersonScreenState extends State<RegisterSalesPersonScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     _registerSalesPerson();
+                    Navigator.push(context,
+                        MaterialPageRoute(builder: (context) => adminHome()));
                   }
-                  Navigator.push(context,
-                      MaterialPageRoute(builder: (context) => adminHome()));
                 },
                 child: const Text('Register'),
               ),

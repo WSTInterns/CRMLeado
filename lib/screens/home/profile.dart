@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/cupertino.dart';
 
 class ClientProf extends StatefulWidget {
   const ClientProf(
@@ -570,7 +571,44 @@ class _ClientProfState extends State<ClientProf> {
                                   icon: const Icon(Icons.delete_forever),
                                   color: Color.fromARGB(255, 207, 117, 117),
                                   onPressed: () {
-                                    deleteActivity(documentSnapshot.id);
+                                    // deleteActivity(documentSnapshot.id);
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          CupertinoAlertDialog(
+                                        content: const Text(
+                                          'Are you sure you want to delete this activity?',
+                                          style: TextStyle(
+                                            fontFamily: "Montserrat",
+                                          ),
+                                        ),
+                                        actions: [
+                                          CupertinoDialogAction(
+                                            child: const Text(
+                                              'Yes',
+                                              style: TextStyle(
+                                                  color:
+                                                      const Color(0XffA85CF9)),
+                                            ),
+                                            onPressed: () {
+                                              deleteActivity(
+                                                  documentSnapshot.id);
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          CupertinoDialogAction(
+                                            child: const Text('No',
+                                                style: TextStyle(
+                                                    fontFamily: "Montserrat",
+                                                    color: const Color(
+                                                        0XffA85CF9))),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   }),
                               title: Text("${formattedDate}"),
                               subtitle: Column(

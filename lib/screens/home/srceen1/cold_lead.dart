@@ -84,7 +84,39 @@ class _ColdLeadsState extends State<ColdLeads> {
                 ),
                 InkWell(
                   onTap: () {
-                    converttohot();
+                    // converttohot();
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => CupertinoAlertDialog(
+                        content: const Text(
+                          'Are you sure you want to convert this lead to hot?',
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                          ),
+                        ),
+                        actions: [
+                          CupertinoDialogAction(
+                            child: const Text(
+                              'Yes',
+                              style: TextStyle(color: const Color(0XffA85CF9)),
+                            ),
+                            onPressed: () {
+                              converttohot();
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          CupertinoDialogAction(
+                            child: const Text('No',
+                                style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: const Color(0XffA85CF9))),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   child: ListTile(
                     dense: true,
@@ -110,7 +142,39 @@ class _ColdLeadsState extends State<ColdLeads> {
                 Divider(thickness: 2, height: 5),
                 InkWell(
                   onTap: () {
-                    converttowarm();
+                    // converttowarm();
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => CupertinoAlertDialog(
+                        content: const Text(
+                          'Are you sure you want to delete this activity?',
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                          ),
+                        ),
+                        actions: [
+                          CupertinoDialogAction(
+                            child: const Text(
+                              'Yes',
+                              style: TextStyle(color: const Color(0XffA85CF9)),
+                            ),
+                            onPressed: () {
+                              converttowarm();
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          CupertinoDialogAction(
+                            child: const Text('No',
+                                style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: const Color(0XffA85CF9))),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   child: ListTile(
                     dense: true,

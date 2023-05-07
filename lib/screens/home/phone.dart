@@ -172,14 +172,34 @@ class phonebook extends StatelessWidget {
                                 SizedBox(
                                   width: 10,
                                 ),
-                                Expanded(
-                                  child: Text(
-                                    documentSnapshot["name"].toUpperCase(),
-                                    style: TextStyle(
-                                      fontFamily: "Montserrat",
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w600,
-                                    ),
+                                Flexible(
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        documentSnapshot["name"].toUpperCase(),
+                                        maxLines: 2,
+                                        overflow: TextOverflow.ellipsis,
+                                        style: TextStyle(
+                                          fontFamily: "Montserrat",
+                                          fontSize: 16,
+                                        ),
+                                      ),
+                                      SizedBox(
+                                        height: 5,
+                                      ),
+                                      Text(
+                                        documentSnapshot["activity_status"]
+                                            .toUpperCase(),
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                          color: Colors.grey,
+                                          fontFamily: "Montserrat",
+                                          fontSize: 12,
+                                        ),
+                                      ),
+                                    ],
                                   ),
                                 ),
                               ],

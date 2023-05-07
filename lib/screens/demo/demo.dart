@@ -13,8 +13,7 @@ class StepperWithStreamBuilder extends StatefulWidget {
       _StepperWithStreamBuilderState();
 }
 
-class _StepperWithStreamBuilderState
-    extends State<StepperWithStreamBuilder> {
+class _StepperWithStreamBuilderState extends State<StepperWithStreamBuilder> {
   final _streamController = BehaviorSubject<List<Activity>>();
   var _currentStep = 0;
 
@@ -22,8 +21,7 @@ class _StepperWithStreamBuilderState
   void initState() {
     super.initState();
     _streamController.add([
-      Activity(
-          title: 'Activity 1', description: 'Description for Activity 1')
+      Activity(title: 'Activity 1', description: 'Description for Activity 1')
     ]);
   }
 
@@ -34,7 +32,7 @@ class _StepperWithStreamBuilderState
   }
 
   void _addActivity() {
-    final currentActivities = _streamController.value ?? [];
+    final currentActivities = _streamController.value;
     final newActivity = Activity(
       title: 'Activity ${currentActivities.length + 1}',
       description: 'Description for Activity ${currentActivities.length + 1}',

@@ -373,7 +373,7 @@ class _manualState extends State<manual> {
                     child: InkWell(
                       onTap: () {
                         if (_formkey.currentState!.validate()) {
-                          // createlead();
+                          createlead();
                           Navigator.of(context)
                               .pushReplacement(MaterialPageRoute(
                                   builder: (context) => HomeBar(

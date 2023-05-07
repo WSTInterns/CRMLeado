@@ -158,6 +158,22 @@ class _ClientProfState extends State<ClientProf> {
         // ),
 
         elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              bottomsheet(
+                context,
+              );
+            },
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
       ),
       body: Container(
         color: Colors.white,
@@ -682,4 +698,55 @@ String getDay(DateTime target) {
 
   String formattedDate = DateFormat('d MMMM h:mm a').format(target);
   return formattedDate;
+}
+
+void bottomsheet(BuildContext context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          // height: 670,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                dense: true,
+                title: Text(
+                  'Options',
+                  style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 17,
+                  ),
+                ),
+                tileColor: Colors.grey[100],
+              ),
+              InkWell(
+                onTap: () {},
+                child: ListTile(
+                  onTap: () {},
+                  dense: true,
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.delete,
+                        size: 26,
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Delete Client',
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      });
 }

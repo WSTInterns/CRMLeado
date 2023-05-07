@@ -1,7 +1,7 @@
 import 'package:brew_crew/screens/home/convertedsaleslist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
-
+import 'package:flutter/cupertino.dart';
 import '../../services/auth.dart';
 import '../authenticate/handler.dart';
 
@@ -124,8 +124,158 @@ class _MoreeState extends State<Moree> {
             height: 13,
           ),
           InkWell(
+            onTap: () {},
+            child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromRGBO(50, 50, 93, 0.25)
+                        .withOpacity(0.08),
+                    // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                    spreadRadius: 10,
+                    blurRadius: 20,
+                    offset: const Offset(0, 8), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(18, 0, 15, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.assignment,
+                      size: 38,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      "REPORTS",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios),
+                    // IconButton(
+                    //     icon: const Icon(Icons.arrow_forward_ios),
+                    //     color: Colors.black,
+                    //     tooltip: 'Go back',
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => convertedsales()));
+                    //     }),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 13,
+          ),
+          InkWell(
+            onTap: () {},
+            child: Container(
+              height: 70,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10),
+                color: Colors.white,
+                boxShadow: [
+                  BoxShadow(
+                    color: const Color.fromRGBO(50, 50, 93, 0.25)
+                        .withOpacity(0.08),
+                    // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                    spreadRadius: 10,
+                    blurRadius: 20,
+                    offset: const Offset(0, 8), // changes position of shadow
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: EdgeInsets.fromLTRB(18, 0, 15, 0),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  children: [
+                    Icon(
+                      Icons.attach_money,
+                      size: 38,
+                    ),
+                    SizedBox(
+                      width: 25,
+                    ),
+                    Text(
+                      "INCENTIVES",
+                      style: TextStyle(
+                        fontFamily: "Montserrat",
+                        color: Colors.black,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                    Spacer(),
+                    Icon(Icons.arrow_forward_ios),
+                    // IconButton(
+                    //     icon: const Icon(Icons.arrow_forward_ios),
+                    //     color: Colors.black,
+                    //     tooltip: 'Go back',
+                    //     onPressed: () {
+                    //       Navigator.push(
+                    //           context,
+                    //           MaterialPageRoute(
+                    //               builder: (context) => convertedsales()));
+                    //     }),
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: 13,
+          ),
+          InkWell(
             onTap: () {
-              signOut();
+              // signOut();
+              showDialog(
+                context: context,
+                builder: (BuildContext context) => CupertinoAlertDialog(
+                  content: const Text(
+                    'Are you sure you want to logout?',
+                    style: TextStyle(
+                      fontFamily: "Montserrat",
+                    ),
+                  ),
+                  actions: [
+                    CupertinoDialogAction(
+                      child: const Text(
+                        'Yes',
+                        style: TextStyle(color: const Color(0XffA85CF9)),
+                      ),
+                      onPressed: () {
+                        Navigator.of(context).pushReplacement(MaterialPageRoute(
+                            builder: (context) => signOut())); //abcd
+                      },
+                    ),
+                    CupertinoDialogAction(
+                      child: const Text('No',
+                          style: TextStyle(
+                              fontFamily: "Montserrat",
+                              color: const Color(0XffA85CF9))),
+                      onPressed: () {
+                        Navigator.of(context).pop();
+                      },
+                    ),
+                  ],
+                ),
+              );
             },
             child: Container(
               height: 70,

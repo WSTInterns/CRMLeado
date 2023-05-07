@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:flutter/cupertino.dart';
 
 class ClientProf extends StatefulWidget {
   const ClientProf(
@@ -157,6 +158,22 @@ class _ClientProfState extends State<ClientProf> {
         // ),
 
         elevation: 0,
+        actions: [
+          IconButton(
+            onPressed: () {
+              bottomsheet(
+                context,
+              );
+            },
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
       ),
       body: Container(
         color: Colors.white,
@@ -570,7 +587,44 @@ class _ClientProfState extends State<ClientProf> {
                                   icon: const Icon(Icons.delete_forever),
                                   color: Color.fromARGB(255, 207, 117, 117),
                                   onPressed: () {
-                                    deleteActivity(documentSnapshot.id);
+                                    // deleteActivity(documentSnapshot.id);
+                                    showDialog(
+                                      context: context,
+                                      builder: (BuildContext context) =>
+                                          CupertinoAlertDialog(
+                                        content: const Text(
+                                          'Are you sure you want to delete this activity?',
+                                          style: TextStyle(
+                                            fontFamily: "Montserrat",
+                                          ),
+                                        ),
+                                        actions: [
+                                          CupertinoDialogAction(
+                                            child: const Text(
+                                              'Yes',
+                                              style: TextStyle(
+                                                  color:
+                                                      const Color(0XffA85CF9)),
+                                            ),
+                                            onPressed: () {
+                                              deleteActivity(
+                                                  documentSnapshot.id);
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                          CupertinoDialogAction(
+                                            child: const Text('No',
+                                                style: TextStyle(
+                                                    fontFamily: "Montserrat",
+                                                    color: const Color(
+                                                        0XffA85CF9))),
+                                            onPressed: () {
+                                              Navigator.of(context).pop();
+                                            },
+                                          ),
+                                        ],
+                                      ),
+                                    );
                                   }),
                               title: Text("${formattedDate}"),
                               subtitle: Column(
@@ -644,4 +698,55 @@ String getDay(DateTime target) {
 
   String formattedDate = DateFormat('d MMMM h:mm a').format(target);
   return formattedDate;
+}
+
+void bottomsheet(BuildContext context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          // height: 670,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                dense: true,
+                title: Text(
+                  'Options',
+                  style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 17,
+                  ),
+                ),
+                tileColor: Colors.grey[100],
+              ),
+              InkWell(
+                onTap: () {},
+                child: ListTile(
+                  onTap: () {},
+                  dense: true,
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.delete,
+                        size: 26,
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'Delete Client',
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      });
 }

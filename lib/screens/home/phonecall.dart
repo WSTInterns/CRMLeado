@@ -18,7 +18,22 @@ class _SendMessageState extends State<SendMessage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        actions: [
+          IconButton(
+            onPressed: () {
+              bottomsheet(context);
+            },
+            icon: Icon(
+              Icons.more_vert,
+              color: Colors.black,
+            ),
+          ),
+          SizedBox(
+            width: 10,
+          ),
+        ],
+      ),
       backgroundColor: Color(0xffffffff),
       body: SingleChildScrollView(
         child: Column(
@@ -132,4 +147,97 @@ class _SendMessageState extends State<SendMessage> {
       ),
     );
   }
+}
+
+void bottomsheet(BuildContext context) {
+  showModalBottomSheet(
+      context: context,
+      builder: (context) {
+        return Container(
+          // height: 670,
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              ListTile(
+                dense: true,
+                title: Text(
+                  'Options',
+                  style: TextStyle(
+                    fontFamily: "Montserrat",
+                    fontSize: 17,
+                  ),
+                ),
+                tileColor: Colors.grey[100],
+              ),
+              InkWell(
+                onTap: () {},
+                child: ListTile(
+                  onTap: () {},
+                  dense: true,
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.insert_drive_file,
+                        size: 26,
+                        color: Colors.blue,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'FILES',
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
+                      // Icon(
+                      //   Icons.delete,
+                      //   size: 26,
+                      //   color: Colors.red,
+                      // ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Divider(thickness: 2, height: 5),
+              InkWell(
+                onTap: () {},
+                child: ListTile(
+                  onTap: () {},
+                  dense: true,
+                  title: Row(
+                    children: [
+                      Icon(
+                        Icons.image,
+                        size: 26,
+                        color: Colors.blue,
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Text(
+                        'PAGES',
+                        style: TextStyle(
+                          fontFamily: "Montserrat",
+                        ),
+                      ),
+                      // Icon(
+                      //   Icons.delete,
+                      //   size: 26,
+                      //   color: Colors.red,
+                      // ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
+        );
+      });
 }

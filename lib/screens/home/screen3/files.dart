@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'upload_file.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
+import 'package:flutter/cupertino.dart';
 
 class contentFilesScreen extends StatefulWidget {
   String? title, message;
@@ -68,9 +69,43 @@ class _contentFilesScreenState extends State<contentFilesScreen> {
                 title: Text(pdfData['name']),
                 // subtitle: Text('Uploaded by: ${pdfData['salesPersonUid']}'),
                 trailing: IconButton(
-                  icon: Icon(Icons.delete),
-                  onPressed: () => _deletePdf(context, pdfDocs[index].id),
-                ),
+                    icon: Icon(Icons.delete),
+                    // onPressed: () => _deletePdf(context, pdfDocs[index].id),
+                    onPressed: () {
+                      showDialog(
+                        context: context,
+                        builder: (BuildContext context) => CupertinoAlertDialog(
+                          content: const Text(
+                            'Are you sure you want to delete this File?',
+                            style: TextStyle(
+                              fontFamily: "Montserrat",
+                            ),
+                          ),
+                          actions: [
+                            CupertinoDialogAction(
+                              child: const Text(
+                                'Yes',
+                                style:
+                                    TextStyle(color: const Color(0XffA85CF9)),
+                              ),
+                              onPressed: () {
+                                _deletePdf(context, pdfDocs[index].id);
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                            CupertinoDialogAction(
+                              child: const Text('No',
+                                  style: TextStyle(
+                                      fontFamily: "Montserrat",
+                                      color: const Color(0XffA85CF9))),
+                              onPressed: () {
+                                Navigator.of(context).pop();
+                              },
+                            ),
+                          ],
+                        ),
+                      );
+                    }),
                 onTap: () => _openPdf(context, pdfData['url']),
               );
             },

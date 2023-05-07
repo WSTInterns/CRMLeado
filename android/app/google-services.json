@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "918809505039",
+    "project_id": "leado-82a1d",
+    "storage_bucket": "leado-82a1d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:918809505039:android:017dd7f1fe6a520da7a27a",
+        "android_client_info": {
+          "package_name": "com.example.brew_crew"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "918809505039-j6dcuq5muvqlvjtei330pis1au4446nt.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCb0IVsViFlWBqpj2kNIaCScIcFuh0jpeY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "918809505039-j6dcuq5muvqlvjtei330pis1au4446nt.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

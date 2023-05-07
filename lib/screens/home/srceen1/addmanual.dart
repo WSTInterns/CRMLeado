@@ -150,18 +150,6 @@ class _manualState extends State<manual> {
                   fontWeight: FontWeight.bold)),
           elevation: 0,
           backgroundColor: Colors.white,
-          leading: IconButton(
-            icon: const Icon(Icons.arrow_back_ios),
-            color: Colors.black,
-            tooltip: 'Back',
-            onPressed: () {
-              //  Navigator.pop(context);
-              Navigator.of(context).pushReplacement(MaterialPageRoute(
-                  builder: (context) => HomeBar(
-                        title: "",
-                      )));
-            },
-          ),
         ),
         body: Padding(
             padding: const EdgeInsets.only(

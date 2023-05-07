@@ -81,7 +81,7 @@ class phonebook extends StatelessWidget {
                       fontSize: 20,
                       color: Colors.white),
                   onTap: () {
-                    Navigator.of(context).push(
+                    Navigator.of(context).pushReplacement(
                         MaterialPageRoute(builder: (context) => manual()));
                   }),
               SpeedDialChild(

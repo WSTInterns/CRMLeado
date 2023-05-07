@@ -4,9 +4,6 @@ import 'package:flutter/material.dart';
 import 'followmain.dart';
 import 'package:get/get.dart';
 
-void main() {
-  runApp(const overdue());
-}
 
 class overdue extends StatefulWidget {
   const overdue({super.key});

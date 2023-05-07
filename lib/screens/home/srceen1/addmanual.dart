@@ -150,12 +150,26 @@ class _manualState extends State<manual> {
                   fontWeight: FontWeight.bold)),
           elevation: 0,
           backgroundColor: Colors.white,
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios),
+            color: Colors.black,
+            tooltip: 'Back',
+            onPressed: () {
+              //  Navigator.pop(context);
+              Navigator.of(context).pushReplacement(MaterialPageRoute(
+                  builder: (context) => HomeBar(
+                        title: "",
+                      )));
+            },
+          ),
         ),
         body: Padding(
             padding: const EdgeInsets.only(
               top: 35.5,
             ),
+            
             child: Form(
+              
               key: _formkey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -178,6 +192,7 @@ class _manualState extends State<manual> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                     child: TextFormField(
+                      
                       onChanged: (value) => {getName(value)},
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -222,8 +237,8 @@ class _manualState extends State<manual> {
                         }
                         return null;
                       },
-                      onChanged: (value) {
-                        getPhoneNo(value);
+                      onSaved: (value) {
+                        getPhoneNo(value!);
                       },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -358,8 +373,12 @@ class _manualState extends State<manual> {
                     child: InkWell(
                       onTap: () {
                         if (_formkey.currentState!.validate()) {
-                          createlead();
-                          Navigator.pop(context);
+                          // createlead();
+                          Navigator.of(context)
+                              .pushReplacement(MaterialPageRoute(
+                                  builder: (context) => HomeBar(
+                                        title: "",
+                                      )));
                         }
                       },
                       child: Container(

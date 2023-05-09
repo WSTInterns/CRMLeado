@@ -146,7 +146,7 @@ class _FollowUpNotes extends State<FollowUpNotes> {
               child: Container(
                 height: 60,
                 decoration: BoxDecoration(
-                    color: Color(0xffA85CF9),
+                    color: Color(0xff4B56D2),
                     borderRadius: BorderRadius.circular(10)),
                 child: const Center(
                   child: Text(

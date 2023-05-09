@@ -40,7 +40,7 @@ class _pagesState extends State<pages> {
         // onPressed: () => Navigator.of(context).pushReplacement(
         //     MaterialPageRoute(
         //         builder: (BuildContext context) => NewTemplate())),
-        backgroundColor: Color(0xffA85CF9),
+        backgroundColor: Color(0xff4B56D2),
         child: Icon(Icons.add),
       ),
       backgroundColor: Colors.white,
@@ -146,7 +146,7 @@ class _pagesState extends State<pages> {
 //         // onPressed: () => Navigator.of(context).pushReplacement(
 //         //     MaterialPageRoute(
 //         //         builder: (BuildContext context) => NewTemplate())),
-//         backgroundColor: Color(0xffA85CF9),
+//         backgroundColor: Color(0xff4B56D2),
 //         child: Icon(Icons.add),
 //       ),
 //       backgroundColor: Colors.white,

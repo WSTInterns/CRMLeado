@@ -33,7 +33,7 @@ class _StoreContactState extends State<StoreContact> {
       "notes": notes,
       "activity_status": 'warm',
       "createdAt": formattedDate,
-      "uid":FirebaseAuth.instance.currentUser!.uid,
+      "uid": FirebaseAuth.instance.currentUser!.uid,
     };
     doc.set(leadlist).whenComplete(() => {print("created")});
     print(leadlist);
@@ -297,7 +297,7 @@ class _StoreContactState extends State<StoreContact> {
                     child: Container(
                       height: 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xffA85CF9),
+                        color: const Color(0xff4B56D2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Center(

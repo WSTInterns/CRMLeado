@@ -35,7 +35,7 @@ class _contentFilesScreenState extends State<contentFilesScreen> {
 
     return Scaffold(
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Color(0xffA85CF9),
+        backgroundColor: Color(0xff4B56D2),
         onPressed: () {
           Navigator.push(
               context, MaterialPageRoute(builder: (context) => UploadFile()));
@@ -86,7 +86,7 @@ class _contentFilesScreenState extends State<contentFilesScreen> {
                               child: const Text(
                                 'Yes',
                                 style:
-                                    TextStyle(color: const Color(0XffA85CF9)),
+                                    TextStyle(color: const Color(0Xff4B56D2)),
                               ),
                               onPressed: () {
                                 _deletePdf(context, pdfDocs[index].id);
@@ -97,7 +97,7 @@ class _contentFilesScreenState extends State<contentFilesScreen> {
                               child: const Text('No',
                                   style: TextStyle(
                                       fontFamily: "Montserrat",
-                                      color: const Color(0XffA85CF9))),
+                                      color: const Color(0Xff4B56D2))),
                               onPressed: () {
                                 Navigator.of(context).pop();
                               },

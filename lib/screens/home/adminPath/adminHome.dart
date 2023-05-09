@@ -25,7 +25,7 @@ class _adminHome extends State<adminHome> {
   Widget build(BuildContext context) {
     return Scaffold(
       floatingActionButton: FloatingActionButton.extended(
-        backgroundColor: const Color(0xffA85CF9),
+        backgroundColor: const Color(0xff4B56D2),
         onPressed: () {
           Navigator.push(
               context,

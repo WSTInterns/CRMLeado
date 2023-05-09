@@ -12,16 +12,16 @@ void main() async {
 }
 
 Map<int, Color> color = {
-  50: Color(0xFFA85CF9),
-  100: const Color(0xffA85CF9),
-  200: const Color(0xffA85CF9),
-  300: const Color(0xffA85CF9),
-  400: const Color(0xffA85CF9),
-  500: const Color(0xffA85CF9),
-  600: const Color(0xffA85CF9),
-  700: const Color(0xffA85CF9),
-  800: const Color(0xffA85CF9),
-  900: const Color(0xffA85CF9),
+  50: Color(0xFF4B56D2),
+  100: const Color(0xFF4B56D2),
+  200: const Color(0xFF4B56D2),
+  300: const Color(0xFF4B56D2),
+  400: const Color(0xFF4B56D2),
+  500: const Color(0xFF4B56D2),
+  600: const Color(0xFF4B56D2),
+  700: const Color(0xFF4B56D2),
+  800: const Color(0xFF4B56D2),
+  900: const Color(0xFF4B56D2),
 };
 
 class MyApp extends StatelessWidget {
@@ -36,11 +36,11 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           appBarTheme: AppBarTheme(
               iconTheme: IconThemeData(color: Color.fromARGB(255, 0, 0, 0))),
-          primarySwatch: MaterialColor(0xffA85CF9, color),
+          primarySwatch: MaterialColor(0xff4B56D2, color),
           brightness: Brightness.light,
-          primaryColor: const Color(0xffA85CF9),
+          primaryColor: const Color(0xFF4B56D2),
           buttonTheme: ButtonThemeData(
-            buttonColor: const Color(0xffA85CF9),
+            buttonColor: const Color(0xFF4B56D2),
             textTheme: ButtonTextTheme.primary,
             colorScheme:
                 Theme.of(context).colorScheme.copyWith(secondary: Colors.white),

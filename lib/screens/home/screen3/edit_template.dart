@@ -86,7 +86,7 @@ class _EditTemplateState extends State<EditTemplate> {
                   ),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all(
-                      const Color(0xffA85CF9),
+                      const Color(0xff4B56D2),
                     ),
                   ),
                 ),

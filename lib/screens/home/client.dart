@@ -20,7 +20,7 @@ class _HomePage1State extends State<HomePage1> {
         child: Scaffold(
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Color(0xffA85CF9),
+            backgroundColor: Color(0xFF4B56D2),
             // title: Container(
             //   //alignment: Alignment.topLeft,
             //   width: double.infinity,

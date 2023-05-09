@@ -42,7 +42,7 @@ class _HotLeadsState extends State<HotLeads> {
           elevation: 0,
           title: const Text(
             'Hot Leads',
-            style: TextStyle(color: Colors.black,fontFamily: "Montserrat"),
+            style: TextStyle(color: Colors.black, fontFamily: "Montserrat"),
           ),
           leading: IconButton(
             icon: const Icon(
@@ -142,7 +142,7 @@ class _HotLeadsState extends State<HotLeads> {
                                   salesmail = people[index].email;
                                 });
                               },
-                              activeColor: Color(0XffA85CF9),
+                              activeColor: Color(0Xff4B56D2),
                               checkColor: Colors.white,
                             ),
                           ),
@@ -186,7 +186,7 @@ class _HotLeadsState extends State<HotLeads> {
                                   child: const Text(
                                     'Yes',
                                     style: TextStyle(
-                                        color: const Color(0XffA85CF9)),
+                                        color: const Color(0Xff4B56D2)),
                                   ),
                                   onPressed: () {
                                     Navigator.of(context)
@@ -203,7 +203,7 @@ class _HotLeadsState extends State<HotLeads> {
                                   child: const Text('No',
                                       style: TextStyle(
                                           fontFamily: "Montserrat",
-                                          color: const Color(0XffA85CF9))),
+                                          color: const Color(0Xff4B56D2))),
                                   onPressed: () {
                                     Navigator.of(context).pop();
                                   },
@@ -218,7 +218,7 @@ class _HotLeadsState extends State<HotLeads> {
                             )),
                         style: ButtonStyle(
                           backgroundColor: MaterialStateProperty.all<Color>(
-                              const Color(0XffA85CF9)),
+                              const Color(0Xff4B56D2)),
                           minimumSize: MaterialStateProperty.all(Size(600, 50)),
                         ),
                       ),

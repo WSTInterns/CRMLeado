@@ -341,7 +341,7 @@ class _HomePageState extends State<HomePage> {
                         margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                         height: 50,
                         decoration: const BoxDecoration(
-                          color: Color(0xffA85CF9),
+                          color: Color(0xff4B56D2),
                         ),
                         child: const Center(
                             child: Text(

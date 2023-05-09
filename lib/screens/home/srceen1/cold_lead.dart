@@ -98,7 +98,7 @@ class _ColdLeadsState extends State<ColdLeads> {
                           CupertinoDialogAction(
                             child: const Text(
                               'Yes',
-                              style: TextStyle(color: const Color(0XffA85CF9)),
+                              style: TextStyle(color: const Color(0Xff4B56D2)),
                             ),
                             onPressed: () {
                               converttohot();
@@ -109,7 +109,7 @@ class _ColdLeadsState extends State<ColdLeads> {
                             child: const Text('No',
                                 style: TextStyle(
                                     fontFamily: "Montserrat",
-                                    color: const Color(0XffA85CF9))),
+                                    color: const Color(0Xff4B56D2))),
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
@@ -156,7 +156,7 @@ class _ColdLeadsState extends State<ColdLeads> {
                           CupertinoDialogAction(
                             child: const Text(
                               'Yes',
-                              style: TextStyle(color: const Color(0XffA85CF9)),
+                              style: TextStyle(color: const Color(0Xff4B56D2)),
                             ),
                             onPressed: () {
                               converttowarm();
@@ -167,7 +167,7 @@ class _ColdLeadsState extends State<ColdLeads> {
                             child: const Text('No',
                                 style: TextStyle(
                                     fontFamily: "Montserrat",
-                                    color: const Color(0XffA85CF9))),
+                                    color: const Color(0Xff4B56D2))),
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
@@ -313,4 +313,3 @@ class _ColdLeadsState extends State<ColdLeads> {
         ));
   }
 }
-

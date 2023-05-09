@@ -160,7 +160,7 @@ class _UploadFileState extends State<UploadFile> {
                       // margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       height: 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xffA85CF9),
+                        color: const Color(0xff4B56D2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Center(
@@ -188,7 +188,7 @@ class _UploadFileState extends State<UploadFile> {
               //   label: Text('Save File', style: TextStyle(color: Colors.white)),
               //   style: ButtonStyle(
               //     backgroundColor: MaterialStateProperty.all(
-              //       Color(0xffA85CF9),
+              //       Color(0xff4B56D2),
               //     ),
               //   ),
               //   icon: Icon(Icons.save_rounded),
@@ -209,7 +209,7 @@ class _UploadFileState extends State<UploadFile> {
                       // margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                       height: 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xffA85CF9),
+                        color: const Color(0xff4B56D2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Center(

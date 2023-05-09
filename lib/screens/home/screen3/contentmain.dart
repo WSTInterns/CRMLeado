@@ -56,7 +56,7 @@ class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
                   // onPressed: () => Navigator.of(context).pushReplacement(
                   //     MaterialPageRoute(
                   //         builder: (BuildContext context) => NewTemplate())),
-                  backgroundColor: Color(0xffA85CF9),
+                  backgroundColor: Color(0xff4B56D2),
                   child: Icon(Icons.add),
                 )
               : null,
@@ -71,7 +71,7 @@ class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
           backgroundColor: Colors.grey,
           appBar: AppBar(
             automaticallyImplyLeading: false,
-            backgroundColor: Color(0xffA85CF9),
+            backgroundColor: Color(0xff4B56D2),
             // title: Container(
             //   //alignment: Alignment.topLeft,
             //   width: double.infinity,
@@ -87,7 +87,7 @@ class _MyAppAkState extends State<MyAppAk> with SingleTickerProviderStateMixin {
             //         ),
             //         prefixIcon: Icon(
             //           Icons.search,
-            //           color: Color(0xffA85CF9),
+            //           color: Color(0xff4B56D2),
             //         ),
             //       ),
             //     ),

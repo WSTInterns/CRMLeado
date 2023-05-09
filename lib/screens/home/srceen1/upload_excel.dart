@@ -148,7 +148,7 @@ class UploadExcelPage extends StatelessWidget {
                 // margin: const EdgeInsets.fromLTRB(10, 0, 10, 0),
                 height: 60,
                 decoration: BoxDecoration(
-                  color: const Color(0xffA85CF9),
+                  color: const Color(0xff4B56D2),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(

@@ -9,20 +9,20 @@ import 'Followup.dart';
 import 'more.dart';
 
 // const MaterialColor myColor =
-//     const MaterialColor(0xffA85CF9, const <int, Color>{
-//   50: const Color(0xffA85CF9),
+//     const MaterialColor(0xff4B56D2, const <int, Color>{
+//   50: const Color(0xff4B56D2),
 // });
 Map<int, Color> color = {
-  50: const Color(0xffA85CF9),
-  100: const Color(0xffA85CF9),
-  200: const Color(0xffA85CF9),
-  300: const Color(0xffA85CF9),
-  400: const Color(0xffA85CF9),
-  500: const Color(0xffA85CF9),
-  600: const Color(0xffA85CF9),
-  700: const Color(0xffA85CF9),
-  800: const Color(0xffA85CF9),
-  900: const Color(0xffA85CF9),
+  50: const Color(0xff4B56D2),
+  100: const Color(0xff4B56D2),
+  200: const Color(0xff4B56D2),
+  300: const Color(0xff4B56D2),
+  400: const Color(0xff4B56D2),
+  500: const Color(0xff4B56D2),
+  600: const Color(0xff4B56D2),
+  700: const Color(0xff4B56D2),
+  800: const Color(0xff4B56D2),
+  900: const Color(0xff4B56D2),
 };
 
 // class HomeBar extends StatelessWidget {
@@ -32,7 +32,7 @@ Map<int, Color> color = {
 //     return MaterialApp(
 //       title: 'Flutter Demo',
 //       theme: ThemeData(
-//         primarySwatch: MaterialColor(0xffA85CF9, color),
+//         primarySwatch: MaterialColor(0xff4B56D2, color),
 //       ),
 //       home: const HomeBar(title: 'Flutter Demo Home Page'),
 //     );
@@ -66,7 +66,7 @@ class _HomeBarState extends State<HomeBar> {
       body: pages[currentIndex],
       bottomNavigationBar: BottomNavigationBar(
           type: BottomNavigationBarType.fixed,
-          selectedItemColor: const Color(0xffA85CF9),
+          selectedItemColor: const Color(0xff4B56D2),
           onTap: onTap,
           elevation: 0,
           selectedLabelStyle: TextStyle(fontFamily: "Montserrat"),

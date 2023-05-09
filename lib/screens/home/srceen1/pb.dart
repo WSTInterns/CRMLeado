@@ -7,16 +7,16 @@ import 'dart:math';
 import 'package:brew_crew/screens/home/srceen1/register.dart';
 
 Map<int, Color> color = {
-  50: const Color(0xffA85CF9),
-  100: const Color(0xffA85CF9),
-  200: const Color(0xffA85CF9),
-  300: const Color(0xffA85CF9),
-  400: const Color(0xffA85CF9),
-  500: const Color(0xffA85CF9),
-  600: const Color(0xffA85CF9),
-  700: const Color(0xffA85CF9),
-  800: const Color(0xffA85CF9),
-  900: const Color(0xffA85CF9),
+  50: const Color(0xff4B56D2),
+  100: const Color(0xff4B56D2),
+  200: const Color(0xff4B56D2),
+  300: const Color(0xff4B56D2),
+  400: const Color(0xff4B56D2),
+  500: const Color(0xff4B56D2),
+  600: const Color(0xff4B56D2),
+  700: const Color(0xff4B56D2),
+  800: const Color(0xff4B56D2),
+  900: const Color(0xff4B56D2),
 };
 
 class MyApp extends StatelessWidget {
@@ -161,7 +161,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                                         ),
                                       ],
                                       borderRadius: BorderRadius.circular(6.r),
-                                      color: Color(0xffA85CF9),
+                                      color: Color(0xff4B56D2),
                                     ),
                                     child: Text(
                                       foundUsers[index].givenName![0],
@@ -246,7 +246,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                                         ),
                                       ],
                                       borderRadius: BorderRadius.circular(6.r),
-                                      // color: Color(0xffA85CF9),
+                                      // color: Color(0xff4B56D2),
                                     ),
                                     child: Text(
                                       contacts[index].givenName![0],

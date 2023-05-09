@@ -41,7 +41,7 @@ class phonebook extends StatelessWidget {
           floatingActionButton: SpeedDial(
             animatedIcon: AnimatedIcons.menu_close,
             openCloseDial: isDialOpen,
-            backgroundColor: const Color(0xffA85CF9),
+            backgroundColor: const Color(0xFF4B56D2),
             overlayColor: Colors.grey,
             overlayOpacity: 0.5,
             spacing: 20,
@@ -51,7 +51,7 @@ class phonebook extends StatelessWidget {
               SpeedDialChild(
                   child: Icon(
                     Icons.contact_phone_sharp,
-                    color: Color.fromRGBO(168, 92, 249, 0.7),
+                    color: Color(0xFF4B56D2),
                   ),
                   label: 'Import from PhoneBook',
                   labelBackgroundColor: Colors.transparent,
@@ -69,7 +69,7 @@ class phonebook extends StatelessWidget {
               SpeedDialChild(
                   child: Icon(
                     Icons.contacts_rounded,
-                    color: Color.fromRGBO(168, 92, 249, 0.7),
+                    color: Color(0xFF4B56D2),
                   ),
                   backgroundColor: Colors.transparent,
                   elevation: 0,
@@ -87,7 +87,7 @@ class phonebook extends StatelessWidget {
               SpeedDialChild(
                   child: Icon(
                     Icons.table_chart,
-                    color: Color.fromRGBO(168, 92, 249, 0.7),
+                    color: Color(0xFF4B56D2),
                   ),
                   backgroundColor: Colors.transparent,
                   elevation: 0,

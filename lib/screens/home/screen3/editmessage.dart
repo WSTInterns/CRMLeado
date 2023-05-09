@@ -70,7 +70,7 @@ class _EditMessageContentState extends State<EditMessageContent> {
           Padding(
             padding: const EdgeInsets.fromLTRB(15, 30, 15, 20),
             child: Container(
-              padding:const EdgeInsets.all(10),
+              padding: const EdgeInsets.all(10),
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(12),
                 color: Colors.white,
@@ -124,7 +124,7 @@ class _EditMessageContentState extends State<EditMessageContent> {
               child: Container(
                 height: 60,
                 decoration: BoxDecoration(
-                  color: const Color(0xffA85CF9),
+                  color: const Color(0xff4B56D2),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(

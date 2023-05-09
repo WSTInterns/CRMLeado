@@ -41,7 +41,7 @@ class _MyAppSak extends State<MyAppSak> {
       appBar: AppBar(
         automaticallyImplyLeading: false,
         elevation: 0.0,
-        backgroundColor: const Color(0xffA85CF9),
+        backgroundColor: const Color(0xff4B56D2),
         title: Column(
           children: [
             const Center(

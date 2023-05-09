@@ -97,7 +97,7 @@ class _WarmLeadsState extends State<WarmLeads> {
                           CupertinoDialogAction(
                             child: const Text(
                               'Yes',
-                              style: TextStyle(color: const Color(0XffA85CF9)),
+                              style: TextStyle(color: const Color(0Xff4B56D2)),
                             ),
                             onPressed: () {
                               converttohot();
@@ -108,7 +108,7 @@ class _WarmLeadsState extends State<WarmLeads> {
                             child: const Text('No',
                                 style: TextStyle(
                                     fontFamily: "Montserrat",
-                                    color: const Color(0XffA85CF9))),
+                                    color: const Color(0Xff4B56D2))),
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
@@ -155,7 +155,7 @@ class _WarmLeadsState extends State<WarmLeads> {
                           CupertinoDialogAction(
                             child: const Text(
                               'Yes',
-                              style: TextStyle(color: const Color(0XffA85CF9)),
+                              style: TextStyle(color: const Color(0Xff4B56D2)),
                             ),
                             onPressed: () {
                               converttocold();
@@ -166,7 +166,7 @@ class _WarmLeadsState extends State<WarmLeads> {
                             child: const Text('No',
                                 style: TextStyle(
                                     fontFamily: "Montserrat",
-                                    color: const Color(0XffA85CF9))),
+                                    color: const Color(0Xff4B56D2))),
                             onPressed: () {
                               Navigator.of(context).pop();
                             },

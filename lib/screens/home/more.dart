@@ -34,7 +34,7 @@ class _MoreeState extends State<Moree> {
               ),
             ),
           ),
-          backgroundColor: Color(0xffA85CF9),
+          backgroundColor: Color(0xff4B56D2),
           elevation: 0,
         ),
         body: _taskList(context),
@@ -257,7 +257,7 @@ class _MoreeState extends State<Moree> {
                     CupertinoDialogAction(
                       child: const Text(
                         'Yes',
-                        style: TextStyle(color: const Color(0XffA85CF9)),
+                        style: TextStyle(color: const Color(0Xff4B56D2)),
                       ),
                       onPressed: () {
                         Navigator.of(context).pushReplacement(MaterialPageRoute(
@@ -268,7 +268,7 @@ class _MoreeState extends State<Moree> {
                       child: const Text('No',
                           style: TextStyle(
                               fontFamily: "Montserrat",
-                              color: const Color(0XffA85CF9))),
+                              color: const Color(0Xff4B56D2))),
                       onPressed: () {
                         Navigator.of(context).pop();
                       },

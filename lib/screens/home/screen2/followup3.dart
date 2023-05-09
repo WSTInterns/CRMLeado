@@ -126,7 +126,7 @@
 //                   child: FloatingActionButton(
 //                     onPressed: null,
 //                     foregroundColor: Colors.white,
-//                     backgroundColor: Color(0xffA85CF9),
+//                     backgroundColor: Color(0xff4B56D2),
 //                     child: Icon(Icons.call),
 //                   ),
 //                 ),
@@ -135,7 +135,7 @@
 //                   child: FloatingActionButton(
 //                     onPressed: null,
 //                     foregroundColor: Colors.white,
-//                     backgroundColor: Color(0xffA85CF9),
+//                     backgroundColor: Color(0xff4B56D2),
 //                     child: Icon(Icons.sms),
 //                   ),
 //                 ),
@@ -144,7 +144,7 @@
 //                   child: FloatingActionButton(
 //                     onPressed: null,
 //                     foregroundColor: Colors.white,
-//                     backgroundColor: Color(0xffA85CF9),
+//                     backgroundColor: Color(0xff4B56D2),
 //                     child: Icon(Icons.mail),
 //                   ),
 //                 ),
@@ -153,7 +153,7 @@
 //                   child: FloatingActionButton(
 //                     onPressed: null,
 //                     foregroundColor: Colors.white,
-//                     backgroundColor: Color(0xffA85CF9),
+//                     backgroundColor: Color(0xff4B56D2),
 //                     child: Icon(
 //                       Icons.perm_phone_msg,
 //                     ),
@@ -411,7 +411,7 @@
 //                   margin: const EdgeInsets.fromLTRB(10, 18, 10, 20),
 //                   height: 60,
 //                   decoration: const BoxDecoration(
-//                     color: Color(0xffA85CF9),
+//                     color: Color(0xff4B56D2),
 //                   ),
 //                   child: const Center(
 //                     child: Text(
@@ -473,7 +473,7 @@
 //                           margin: const EdgeInsets.fromLTRB(10, 18, 10, 20),
 //                           height: 60,
 //                           decoration: const BoxDecoration(
-//                             color: Color(0xffA85CF9),
+//                             color: Color(0xff4B56D2),
 //                           ),
 //                           child: const Center(
 //                             child: Text(

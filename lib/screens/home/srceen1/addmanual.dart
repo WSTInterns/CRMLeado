@@ -167,9 +167,7 @@ class _manualState extends State<manual> {
             padding: const EdgeInsets.only(
               top: 35.5,
             ),
-            
             child: Form(
-              
               key: _formkey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -192,7 +190,6 @@ class _manualState extends State<manual> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                     child: TextFormField(
-                      
                       onChanged: (value) => {getName(value)},
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -384,7 +381,7 @@ class _manualState extends State<manual> {
                       child: Container(
                         height: 60,
                         decoration: BoxDecoration(
-                          color: const Color(0xffA85CF9),
+                          color: const Color(0xff4B56D2),
                           borderRadius: BorderRadius.circular(10),
                         ),
                         child: const Center(
@@ -613,7 +610,7 @@ class _MyState extends State<My> {
                     margin: const EdgeInsets.fromLTRB(10, 10, 10, 0),
                     height: 50,
                     decoration: const BoxDecoration(
-                      color: Color(0xffA85CF9),
+                      color: Color(0xff4B56D2),
                     ),
                     child: const Center(
                         child: Text(

@@ -159,7 +159,7 @@ class ExcelPage extends StatelessWidget {
                     height: 60,
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(12),
-                      color: const Color(0xffA85CF9),
+                      color: const Color(0xff4B56D2),
                     ),
                     child: const Center(
                       child: Text(

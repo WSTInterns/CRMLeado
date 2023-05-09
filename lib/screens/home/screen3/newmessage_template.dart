@@ -54,7 +54,7 @@ class _NewTemplateState extends State<NewTemplate> {
     Map<String, dynamic> messages = {
       "title": title,
       "message": message,
-      "uid": FirebaseAuth.instance.currentUser!.uid     
+      "uid": FirebaseAuth.instance.currentUser!.uid
     };
     doc.set(messages).whenComplete(() => {print("Saved Message")});
   }
@@ -212,7 +212,7 @@ class _NewTemplateState extends State<NewTemplate> {
                   child: Container(
                     height: 60,
                     decoration: BoxDecoration(
-                      color: const Color(0xffA85CF9),
+                      color: const Color(0xff4B56D2),
                       borderRadius: BorderRadius.circular(10),
                     ),
                     child: const Center(

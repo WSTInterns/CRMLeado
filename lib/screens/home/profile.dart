@@ -219,7 +219,7 @@ class _ClientProfState extends State<ClientProf> {
                         margin: EdgeInsets.only(left: 5.0, right: 5.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Color(0xffA85CF9),
+                          color: Color(0xff4B56D2),
                           boxShadow: [
                             BoxShadow(
                               color: const Color.fromRGBO(50, 50, 93, 0.25)
@@ -249,7 +249,7 @@ class _ClientProfState extends State<ClientProf> {
                         margin: EdgeInsets.only(left: 5.0, right: 5.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Color(0xffA85CF9),
+                          color: Color(0xff4B56D2),
                           boxShadow: [
                             BoxShadow(
                               color: const Color.fromRGBO(50, 50, 93, 0.25)
@@ -279,7 +279,7 @@ class _ClientProfState extends State<ClientProf> {
                         margin: EdgeInsets.only(left: 5.0, right: 5.0),
                         decoration: BoxDecoration(
                           borderRadius: BorderRadius.circular(15),
-                          color: Color(0xffA85CF9),
+                          color: Color(0xff4B56D2),
                           boxShadow: [
                             BoxShadow(
                               color: const Color.fromRGBO(50, 50, 93, 0.25)
@@ -340,7 +340,7 @@ class _ClientProfState extends State<ClientProf> {
                   child: ListTile(
                     leading: Icon(
                       Icons.group_add_rounded,
-                      color: Colors.deepPurple,
+                      color: Color(0xff4B56D2),
                       size: 30,
                     ),
                     title: Text("${getCreatedDate()}"),
@@ -580,7 +580,7 @@ class _ClientProfState extends State<ClientProf> {
                             child: ListTile(
                               leading: Icon(
                                 iconlist["${documentSnapshot["Type"]}"],
-                                color: Colors.deepPurple,
+                                color: Color(0xff4B56D2),
                                 size: 30,
                               ),
                               trailing: IconButton(
@@ -604,7 +604,7 @@ class _ClientProfState extends State<ClientProf> {
                                               'Yes',
                                               style: TextStyle(
                                                   color:
-                                                      const Color(0XffA85CF9)),
+                                                      const Color(0Xff4B56D2)),
                                             ),
                                             onPressed: () {
                                               deleteActivity(
@@ -617,7 +617,7 @@ class _ClientProfState extends State<ClientProf> {
                                                 style: TextStyle(
                                                     fontFamily: "Montserrat",
                                                     color: const Color(
-                                                        0XffA85CF9))),
+                                                        0Xff4B56D2))),
                                             onPressed: () {
                                               Navigator.of(context).pop();
                                             },

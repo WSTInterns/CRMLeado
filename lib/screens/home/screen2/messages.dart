@@ -62,7 +62,7 @@ class HomePage extends State<messages> {
               child: Row(
                 children: [
                   FloatingActionButton(
-                    backgroundColor: Color(0xffA85CF9),
+                    backgroundColor: Color(0xff4B56D2),
                     onPressed: null,
                     child: Icon(Icons.wechat_sharp),
                   ),
@@ -150,7 +150,7 @@ class HomePage extends State<messages> {
                     margin: const EdgeInsets.fromLTRB(10, 18, 10, 20),
                     height: 60,
                     decoration: const BoxDecoration(
-                      color: Color(0xffA85CF9),
+                      color: Color(0xff4B56D2),
                     ),
                     child: const Center(
                       child: Text(

@@ -27,9 +27,7 @@ class _SendFunctionState extends State<SendFunction> {
   sendemail() async {
     final Uri emailUri = Uri(
         scheme: 'mailto',
-        queryParameters: {
-          
-        },
+        queryParameters: {},
         path: '${widget.email}',
         query: 'subject=${widget.title}&body=${widget.message}');
     try {
@@ -68,7 +66,20 @@ class _SendFunctionState extends State<SendFunction> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
+      appBar: AppBar(
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          tooltip: 'Back',
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
       // body: Center(child: Text('${widget.title} ${widget.message}')),
       body: Column(
         children: [
@@ -158,7 +169,7 @@ class _SendFunctionState extends State<SendFunction> {
               child: Container(
                 height: 60,
                 decoration: BoxDecoration(
-                  color: const Color(0xffA85CF9),
+                  color: const Color(0xFF4B56D2),
                   borderRadius: BorderRadius.circular(10),
                 ),
                 child: const Center(

@@ -6,7 +6,6 @@ import 'package:intl/intl.dart';
 
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
-
 class MyStepperForm extends StatefulWidget {
   MyStepperForm({Key? key, required this.email}) : super(key: key);
   String email;
@@ -67,32 +66,30 @@ class _MyStepperFormState extends State<MyStepperForm> {
     print(data);
     document.set(data);
 
+    // Calculate the notification time (1 hour before toutc)
+    var notificationTime = toutc.subtract(Duration(hours: 1));
 
-     // Calculate the notification time (1 hour before toutc)
-  var notificationTime = toutc.subtract(Duration(hours: 1));
+    // Schedule the notification
+    FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+        FlutterLocalNotificationsPlugin();
+    var android = AndroidInitializationSettings('@mipmap/ic_launcher');
+    var initializationSettings = InitializationSettings(android: android);
+    flutterLocalNotificationsPlugin.initialize(initializationSettings);
+    var androidDetails = AndroidNotificationDetails(
+      'channel_id',
+      'channel_name',
+      channelDescription: 'channel_description',
+      importance: Importance.high,
+      priority: Priority.high,
+    );
+    var platformDetails = NotificationDetails(android: androidDetails);
+    flutterLocalNotificationsPlugin.schedule(
+        0, // notification id
+        'Reminder', // notification title
+        'Your activity is coming up in 1 hour', // notification body
+        notificationTime, // notification time
+        platformDetails);
 
-  // Schedule the notification
-  FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin = FlutterLocalNotificationsPlugin();
-  var android = AndroidInitializationSettings('@mipmap/ic_launcher');
-  var initializationSettings = InitializationSettings(android: android);
-  flutterLocalNotificationsPlugin.initialize(initializationSettings);
-  var androidDetails = AndroidNotificationDetails(
-    'channel_id',
-    'channel_name',
-    channelDescription:'channel_description',
-    importance: Importance.high,
-    priority: Priority.high,
-  );
-  var platformDetails = NotificationDetails(android: androidDetails);
-  flutterLocalNotificationsPlugin.schedule(
-    0, // notification id
-    'Reminder', // notification title
-    'Your activity is coming up in 1 hour', // notification body
-    notificationTime, // notification time
-    platformDetails
-  );
-    
-    
     Navigator.pop(context);
 
     Map<String, dynamic> list = {
@@ -344,7 +341,7 @@ class _MyStepperFormState extends State<MyStepperForm> {
                     child: Container(
                       height: 60,
                       decoration: BoxDecoration(
-                        color: const Color(0xffA85CF9),
+                        color: const Color(0xff4B56D2),
                         borderRadius: BorderRadius.circular(10),
                       ),
                       child: const Center(

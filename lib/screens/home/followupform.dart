@@ -124,8 +124,20 @@ class _MyStepperFormState extends State<MyStepperForm> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: const Text('ADD ACTIVITY'),
+          title: Text("ADD ACTIVITY",style: TextStyle(color: Colors.black),),
+        backgroundColor: Colors.white,
+        elevation: 0,
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          tooltip: 'Back',
+          onPressed: () {
+            Navigator.pop(context);
+          },
         ),
+      ),
         body: Padding(
           padding: const EdgeInsets.only(
             top: 35.5,

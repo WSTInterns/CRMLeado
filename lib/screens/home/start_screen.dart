@@ -71,9 +71,9 @@ class StartScreenPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 40, 0, 10),
-                  width: 160,
-                  height: 160,
+                  padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
+                  width: 145,
+                  height: 145,
                   decoration: BoxDecoration(
                     color: Color(0xff4B56D2),
                     borderRadius: BorderRadius.circular(15),
@@ -91,7 +91,7 @@ class StartScreenPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.home_outlined,
-                          size: 50,
+                          size: 45,
                           color: Colors.white,
                         ),
                         SizedBox(height: 10),
@@ -100,7 +100,7 @@ class StartScreenPage extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: "Montserrat",
-                            fontSize: 22,
+                            fontSize: 20,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
@@ -110,9 +110,9 @@ class StartScreenPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
-                  width: 160,
-                  height: 160,
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                  width: 145,
+                  height: 145,
                   decoration: BoxDecoration(
                     color: Color(0xff4B56D2),
                     borderRadius: BorderRadius.circular(15),
@@ -130,7 +130,7 @@ class StartScreenPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.table_chart,
-                          size: 45,
+                          size: 40,
                           color: Colors.white,
                         ),
                         SizedBox(height: 10),
@@ -139,7 +139,7 @@ class StartScreenPage extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: "Montserrat",
-                            fontSize: 22,
+                            fontSize: 19,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
@@ -154,9 +154,9 @@ class StartScreenPage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
-                  width: 160,
-                  height: 160,
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                  width: 145,
+                  height: 145,
                   decoration: BoxDecoration(
                     color: Color(0xff4B56D2),
                     borderRadius: BorderRadius.circular(15),
@@ -173,16 +173,16 @@ class StartScreenPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.contacts_rounded,
-                          size: 45,
+                          size: 40,
                           color: Colors.white,
                         ),
                         SizedBox(height: 10),
                         Text(
-                          "ADD CONTACT",
+                          "ADD        CONTACT",
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: "Montserrat",
-                            fontSize: 22,
+                            fontSize: 19,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),
@@ -192,9 +192,9 @@ class StartScreenPage extends StatelessWidget {
                   ),
                 ),
                 Container(
-                  padding: EdgeInsets.fromLTRB(0, 30, 0, 10),
-                  width: 160,
-                  height: 160,
+                  padding: EdgeInsets.fromLTRB(0, 20, 0, 10),
+                  width: 145,
+                  height: 145,
                   decoration: BoxDecoration(
                     color: Color(0xff4B56D2),
                     borderRadius: BorderRadius.circular(15),
@@ -211,7 +211,7 @@ class StartScreenPage extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.contact_phone_sharp,
-                          size: 45,
+                          size: 40,
                           color: Colors.white,
                         ),
                         SizedBox(height: 10),
@@ -220,7 +220,7 @@ class StartScreenPage extends StatelessWidget {
                           textAlign: TextAlign.center,
                           style: TextStyle(
                             fontFamily: "Montserrat",
-                            fontSize: 22,
+                            fontSize: 19,
                             fontWeight: FontWeight.w500,
                             color: Colors.white,
                           ),

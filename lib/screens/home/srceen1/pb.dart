@@ -19,8 +19,8 @@ Map<int, Color> color = {
   900: const Color(0xff4B56D2),
 };
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class MyAppPb extends StatelessWidget {
+  const MyAppPb({super.key});
 
   // This widget is the root of your application.
   @override

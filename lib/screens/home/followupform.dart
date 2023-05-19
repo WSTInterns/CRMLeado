@@ -124,147 +124,100 @@ class _MyStepperFormState extends State<MyStepperForm> {
     return Scaffold(
         resizeToAvoidBottomInset: false,
         appBar: AppBar(
-          title: Text("ADD ACTIVITY",style: TextStyle(color: Colors.black),),
-        backgroundColor: Colors.white,
-        elevation: 0,
-        leading: IconButton(
-          icon: const Icon(
-            Icons.arrow_back_ios,
-            color: Colors.black,
+          title: Text(
+            "ADD ACTIVITY",
+            style: TextStyle(color: Colors.black),
           ),
-          tooltip: 'Back',
-          onPressed: () {
-            Navigator.pop(context);
-          },
+          backgroundColor: Colors.white,
+          elevation: 0,
+          leading: IconButton(
+            icon: const Icon(
+              Icons.arrow_back_ios,
+              color: Colors.black,
+            ),
+            tooltip: 'Back',
+            onPressed: () {
+              Navigator.pop(context);
+            },
+          ),
         ),
-      ),
-        body: Padding(
-          padding: const EdgeInsets.only(
-            top: 35.5,
-          ),
-          child: Form(
-            key: formkey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: <Widget>[
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "ADD ACTIVITY",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                SizedBox(
-                  height: 7,
-                ),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
-                  child: DropdownButtonFormField<String>(
-                    validator: (value) {
-                      if (_selectedItem == null) {
-                        return 'REQUIRED';
-                      }
-                      return null;
-                    },
-                    decoration: InputDecoration(
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                      ),
-                      hintText: 'Select an Acticity',
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.only(
+              top: 35.5,
+            ),
+            child: Form(
+              key: formkey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: <Widget>[
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
+                    child: Text(
+                      "ADD ACTIVITY",
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
                     ),
-                    items: <String>['Phone Call', 'Message', 'Meet', 'Note']
-                        .map<DropdownMenuItem<String>>((String value) {
-                      return DropdownMenuItem<String>(
-                        onTap: () {
-                          this.activity = value;
-                        },
-                        value: value,
-                        child: Text(value),
-                      );
-                    }).toList(),
-                    onChanged: (String? newValue) {
-                      activity = newValue?.trim();
-                    },
                   ),
-                ),
-                // new Expanded(
-
-                const SizedBox(
-                  height: 23,
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "DATE",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
+                  SizedBox(
+                    height: 7,
                   ),
-                ),
-                const SizedBox(
-                  height: 7,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
-                  child: TextFormField(
-                    validator: (String? value) {
-                      if (value!.isEmpty) {
-                        return "Required";
-                      } else {
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 15, vertical: 0),
+                    child: DropdownButtonFormField<String>(
+                      validator: (value) {
+                        if (_selectedItem == null) {
+                          return 'REQUIRED';
+                        }
                         return null;
-                      }
-                    },
-                    decoration: InputDecoration(
-                      hintText: 'Date',
-                      border: OutlineInputBorder(),
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                      },
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(),
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                        ),
+                        hintText: 'Select an Acticity',
                       ),
+                      items: <String>['Phone Call', 'Message', 'Meet', 'Note']
+                          .map<DropdownMenuItem<String>>((String value) {
+                        return DropdownMenuItem<String>(
+                          onTap: () {
+                            this.activity = value;
+                          },
+                          value: value,
+                          child: Text(value),
+                        );
+                      }).toList(),
+                      onChanged: (String? newValue) {
+                        activity = newValue?.trim();
+                      },
                     ),
-                    controller: dateInputController,
-                    readOnly: true,
-                    onTap: () async {
-                      DateTime? pickedDate = await showDatePicker(
-                          context: context,
-                          initialDate: DateTime.now(),
-                          firstDate: DateTime(1950, 1, 1),
-                          lastDate: DateTime(2090, 1, 1));
+                  ),
+                  // new Expanded(
 
-                      if (pickedDate != null) {
-                        final formattedDate =
-                            DateFormat('dd-MM-yyyy').format(pickedDate);
-                        dateInputController.text = formattedDate;
-                        selecteddate = pickedDate;
-                      }
-                    },
+                  const SizedBox(
+                    height: 23,
                   ),
-                ),
-                const SizedBox(
-                  height: 23,
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "TIME",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
+                    child: Text(
+                      "DATE",
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 7,
-                ),
-                Padding(
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  Padding(
                     padding:
                         const EdgeInsets.symmetric(vertical: 0, horizontal: 15),
-                    child: Center(
-                        child: TextFormField(
+                    child: TextFormField(
                       validator: (String? value) {
                         if (value!.isEmpty) {
                           return "Required";
@@ -272,103 +225,159 @@ class _MyStepperFormState extends State<MyStepperForm> {
                           return null;
                         }
                       },
-                      readOnly: true,
-                      controller: timeController,
                       decoration: InputDecoration(
-                        hintText: 'Pick your Time',
+                        hintText: 'Date',
                         border: OutlineInputBorder(),
                         focusedBorder: OutlineInputBorder(
                           borderSide:
                               BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
                       ),
+                      controller: dateInputController,
+                      readOnly: true,
                       onTap: () async {
-                        var time = await showTimePicker(
-                            context: context, initialTime: TimeOfDay.now());
+                        DateTime? pickedDate = await showDatePicker(
+                            context: context,
+                            initialDate: DateTime.now(),
+                            firstDate: DateTime(1950, 1, 1),
+                            lastDate: DateTime(2090, 1, 1));
 
-                        if (time != null) {
-                          timeController.text = time.format(context);
-                          selectedtime = time;
+                        if (pickedDate != null) {
+                          final formattedDate =
+                              DateFormat('dd-MM-yyyy').format(pickedDate);
+                          dateInputController.text = formattedDate;
+                          selecteddate = pickedDate;
                         }
                       },
-                    ))),
-                const SizedBox(
-                  height: 23,
-                ),
-                Padding(
-                  padding:
-                      EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
-                  child: Text(
-                    "NOTES",
-                    style: TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
-                    textAlign: TextAlign.left,
-                  ),
-                ),
-                const SizedBox(
-                  height: 7,
-                ),
-                Padding(
-                  padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
-                  child: TextFormField(
-                    onChanged: (value) {
-                      this.notes = value;
-                    },
-                    maxLength: 500,
-                    expands: false,
-
-                    // minLines: 1,
-                    validator: (value) {
-                      if (value!.isEmpty) {
-                        return "Required";
-                      } else {
-                        return null;
-                      }
-                    },
-                    maxLines: null,
-                    keyboardType: TextInputType.multiline,
-                    decoration: InputDecoration(
-                      focusedBorder: OutlineInputBorder(
-                        borderSide:
-                            BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
-                      ),
-                      // hintText: "Enter A Message Here",
-                      hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.all(Radius.circular(3)),
-                      ),
                     ),
                   ),
-                ),
-                SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 15.0),
-                  child: InkWell(
-                    onTap: () {
-                      if (formkey.currentState!.validate()) {
-                        addActivity();
-                      }
-                    },
-                    child: Container(
-                      height: 60,
-                      decoration: BoxDecoration(
-                        color: const Color(0xff4B56D2),
-                        borderRadius: BorderRadius.circular(10),
-                      ),
-                      child: const Center(
-                          child: Text(
-                        "DONE",
-                        style: TextStyle(
-                          color: Color(0xffECF2FF),
-                          fontSize: 17,
-                          fontWeight: FontWeight.bold,
+                  const SizedBox(
+                    height: 23,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
+                    child: Text(
+                      "TIME",
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 0, horizontal: 15),
+                      child: Center(
+                          child: TextFormField(
+                        validator: (String? value) {
+                          if (value!.isEmpty) {
+                            return "Required";
+                          } else {
+                            return null;
+                          }
+                        },
+                        readOnly: true,
+                        controller: timeController,
+                        decoration: InputDecoration(
+                          hintText: 'Pick your Time',
+                          border: OutlineInputBorder(),
+                          focusedBorder: OutlineInputBorder(
+                            borderSide: BorderSide(
+                                width: 2.5, color: Color(0xffD9ACF5)),
+                          ),
                         ),
-                      )),
+                        onTap: () async {
+                          var time = await showTimePicker(
+                              context: context, initialTime: TimeOfDay.now());
+
+                          if (time != null) {
+                            timeController.text = time.format(context);
+                            selectedtime = time;
+                          }
+                        },
+                      ))),
+                  const SizedBox(
+                    height: 23,
+                  ),
+                  Padding(
+                    padding:
+                        EdgeInsets.only(left: 17, bottom: 0, right: 15, top: 0),
+                    child: Text(
+                      "NOTES",
+                      style:
+                          TextStyle(fontSize: 13, fontWeight: FontWeight.bold),
+                      textAlign: TextAlign.left,
                     ),
                   ),
-                ),
-              ],
+                  const SizedBox(
+                    height: 7,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
+                    child: TextFormField(
+                      onChanged: (value) {
+                        this.notes = value;
+                      },
+                      maxLength: 500,
+                      expands: false,
+
+                      // minLines: 1,
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Required";
+                        } else {
+                          return null;
+                        }
+                      },
+                      maxLines: null,
+                      keyboardType: TextInputType.multiline,
+                      decoration: InputDecoration(
+                        focusedBorder: OutlineInputBorder(
+                          borderSide:
+                              BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
+                        ),
+                        // hintText: "Enter A Message Here",
+                        hintStyle: TextStyle(fontSize: 17, color: Colors.grey),
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.all(Radius.circular(3)),
+                        ),
+                      ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 15.0),
+                    child: InkWell(
+                      onTap: () {
+                        if (formkey.currentState!.validate()) {
+                          addActivity();
+                        }
+                      },
+                      child: Container(
+                        height: 60,
+                        decoration: BoxDecoration(
+                          color: const Color(0xff4B56D2),
+                          borderRadius: BorderRadius.circular(10),
+                        ),
+                        child: const Center(
+                            child: Text(
+                          "DONE",
+                          style: TextStyle(
+                            color: Color(0xffECF2FF),
+                            fontSize: 17,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ));

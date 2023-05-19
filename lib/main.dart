@@ -1,9 +1,11 @@
+import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:brew_crew/screens/home/splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'models/firebaseuser.dart';
 import 'services/auth.dart';
+import 'screens/home/start_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -60,7 +62,8 @@ class MyApp extends StatelessWidget {
             bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat'),
           ),
         ),
-        home: SplashScreen(),
+        // home: SplashScreen(),
+        home: StartScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

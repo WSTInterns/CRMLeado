@@ -1,3 +1,4 @@
+import 'package:brew_crew/screens/authenticate/login.dart';
 import 'package:brew_crew/screens/home/convertedsaleslist.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -260,8 +261,9 @@ class _MoreeState extends State<Moree> {
                         style: TextStyle(color: const Color(0Xff4B56D2)),
                       ),
                       onPressed: () {
-                        Navigator.of(context).pushReplacement(MaterialPageRoute(
-                            builder: (context) => signOut())); //abcd
+                        signOut();
+                        Navigator.of(context).pop();
+                        
                       },
                     ),
                     CupertinoDialogAction(

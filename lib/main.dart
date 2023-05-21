@@ -7,6 +7,8 @@ import 'models/firebaseuser.dart';
 import 'services/auth.dart';
 import 'screens/home/start_screen.dart';
 
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
@@ -56,7 +58,7 @@ class MyApp extends StatelessWidget {
             ),
             headline6: TextStyle(
               fontSize: 20.0,
-              fontStyle: FontStyle.normal,
+              fontStyle: FontStyle.normal,  
               fontFamily: "Montserrat",
             ),
             bodyText2: TextStyle(fontSize: 14.0, fontFamily: 'Montserrat'),

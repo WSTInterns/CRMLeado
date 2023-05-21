@@ -23,26 +23,43 @@ class _FollowUpNotes extends State<FollowUpNotes> {
     return content.replaceAll(r'\n', '\n');
   }
 
-  String? notes;
+  
   @override
   void initState() {
     // TODO: implement initState
     super.initState();
-    getNotes(notes);
+    getNotes();
     print('initialized');
   }
 
-  void getNotes(notes) {
-    DocumentReference docref =
-        FirebaseFirestore.instance.collection('Leads').doc(widget.email);
+  void getNotes() {
+  DocumentReference docRef =
+      FirebaseFirestore.instance.collection('Leads').doc(widget.email);
 
-    docref.get().then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        this.notes = documentSnapshot["notes"].toString();
-        print(documentSnapshot["notes"]);
-      }
-    });
-  }
+  docRef.get().then((DocumentSnapshot documentSnapshot) {
+    if (documentSnapshot.exists) {
+      String? fetchedNotes = documentSnapshot.get('notes') as String?;
+      setState(() {
+        tec.text = fetchedNotes ?? '';
+      });
+    }
+  }).catchError((error) {
+    print('Error fetching document: $error');
+  });
+}
+
+void editNotes(String newNotes) {
+  DocumentReference docRef =
+      FirebaseFirestore.instance.collection('Leads').doc(widget.email);
+
+  docRef.update({'notes': newNotes}).then((value) {
+    print('Notes updated successfully');
+  }).catchError((error) {
+    print('Error updating notes: $error');
+  });
+}
+
+
 
   TextEditingController tec = TextEditingController();
 
@@ -114,10 +131,11 @@ class _FollowUpNotes extends State<FollowUpNotes> {
                   child: TextFormField(
                     maxLines: null, // Allows for unlimited lines of text
                     keyboardType: TextInputType.multiline,
+                    
+                    
                     // onChanged: ((value) => widget.message = value),
                     //initialValue: convertNewLine(widget.message),
-                    initialValue: this.notes,
-                    controller: null,
+                    controller: tec,
                     decoration: InputDecoration(
                       filled: true,
                       fillColor: Colors.white,
@@ -136,13 +154,12 @@ class _FollowUpNotes extends State<FollowUpNotes> {
             ),
             child: InkWell(
               onTap: () {
-                if (_formkey.currentState!.validate()) {
-                  // editmessage();
-                  Navigator.pop(context);
+  if (_formkey.currentState!.validate()) {
+    editNotes(tec.text);
+    Navigator.pop(context);
+  }
+},
 
-                  // Navigator.pop(context);
-                }
-              },
               child: Container(
                 height: 60,
                 decoration: BoxDecoration(

@@ -38,23 +38,18 @@ class _ClientProfState extends State<ClientProf> {
     "Meet": Icons.people_alt_outlined,
     "Note": Icons.note_alt_rounded
   };
-  String getCreatedDate() {
-    DocumentReference doc =
-        FirebaseFirestore.instance.collection("Leads").doc(widget.email);
+   
 
-    doc.get().then<dynamic>((DocumentSnapshot datasnapshot) {
-      if (datasnapshot.exists) {
-        return datasnapshot["createdAt"];
-      }
-    });
-    return '30 March 00:00 AM';
-  }
-
-  String notes = '';
+  Future<String>? notesFuture;
   deleteActivity(docid) {
     DocumentReference documentReference =
         FirebaseFirestore.instance.collection("Activities").doc(docid);
     documentReference.delete();
+  }
+  void deleteClient(){
+    DocumentReference documentReference =
+        FirebaseFirestore.instance.collection("Activities").doc(widget.email);
+        documentReference.delete();
   }
 
   void _callFunctionality(int phoneNo) async {
@@ -115,20 +110,25 @@ class _ClientProfState extends State<ClientProf> {
       print(e.toString());
     }
   }
+  TextEditingController tec = TextEditingController();
+
+  Future<String> getNotes() async {
+    DocumentReference docRef =
+        FirebaseFirestore.instance.collection('Leads').doc(widget.email);
+
+    DocumentSnapshot documentSnapshot = await docRef.get();
+    if (documentSnapshot.exists) {
+      return documentSnapshot.get('notes') as String? ?? '';
+    }
+    return '';
+  }
 
   getFollowup() {}
 
-  String getNotes() {
-    DocumentReference docref =
-        FirebaseFirestore.instance.collection('Leads').doc(widget.email);
-
-    docref.get().then((DocumentSnapshot documentSnapshot) {
-      if (documentSnapshot.exists) {
-        notes = documentSnapshot["notes"].toString();
-        return documentSnapshot["notes"].toString();
-      }
-    });
-    return '';
+  @override
+  void initState() {
+    super.initState();
+    notesFuture = getNotes();
   }
 
   @override
@@ -136,12 +136,6 @@ class _ClientProfState extends State<ClientProf> {
     return Scaffold(
       backgroundColor: Colors.white,
       appBar: AppBar(
-        // shape: const Border(
-        //   bottom: BorderSide(
-        //     color: Color.fromRGBO(50, 50, 93, 0.25),
-        //     width: 0.3,
-        //   ),
-        // ),
         backgroundColor: Colors.transparent,
         title: const Text(
           '',
@@ -169,6 +163,7 @@ class _ClientProfState extends State<ClientProf> {
             onPressed: () {
               bottomsheet(
                 context,
+                widget.email,
               );
             },
             icon: Icon(
@@ -344,29 +339,44 @@ class _ClientProfState extends State<ClientProf> {
                     ],
                   ),
                   child: ListTile(
-                    leading: Icon(
-                      Icons.group_add_rounded,
-                      color: Color(0xff4B56D2),
-                      size: 30,
-                    ),
-                    title: Text("${getCreatedDate()}"),
-                    subtitle: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          height: 2,
-                        ),
-                        Text(
-                          "Lead Created ",
-                          style: TextStyle(
-                            color: Colors.black,
-                          ),
-                        ),
-                        SizedBox(height: 3),
-                        // Text("No Description"),
-                      ],
-                    ),
-                  ),
+            title: FutureBuilder<String>(
+              future: notesFuture,
+              builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Text('Error: ${snapshot.error}');
+                } else {
+                  String notes = snapshot.data ?? '';
+                  return Column(
+  crossAxisAlignment: CrossAxisAlignment.start,
+  children: [
+    Text(
+      '${notes}',
+      style: TextStyle(
+        fontSize: 18,
+        color: Colors.black,
+      ),
+    ),
+    SizedBox(height: 4), // Adjust the spacing between main text and subtitle
+    Row(
+      children: [
+        Text(
+          'Notes',
+          style: TextStyle(
+            fontSize: 14,
+            color: Colors.grey,
+          ),
+        ),
+      ],
+    ),
+  ],
+)
+;
+                }
+              },
+            ),
+          ),
                 ),
               ),
               SizedBox(
@@ -421,7 +431,6 @@ class _ClientProfState extends State<ClientProf> {
                             phoneNo: widget.phoneNo,
                             // notes: notes,
                           )));
-                  print(notes);
                 },
                 child: Container(
                   width: double.infinity,
@@ -529,6 +538,7 @@ class _ClientProfState extends State<ClientProf> {
                 height: 1,
               ),
               StreamBuilder<QuerySnapshot>(
+                
                 stream: FirebaseFirestore.instance
                     .collection("Activities")
                     .where('LeadUid', isEqualTo: widget.email)
@@ -594,6 +604,7 @@ class _ClientProfState extends State<ClientProf> {
                                   color: Color.fromARGB(255, 207, 117, 117),
                                   onPressed: () {
                                     // deleteActivity(documentSnapshot.id);
+                                    
                                     showDialog(
                                       context: context,
                                       builder: (BuildContext context) =>
@@ -706,7 +717,7 @@ String getDay(DateTime target) {
   return formattedDate;
 }
 
-void bottomsheet(BuildContext context) {
+void bottomsheet(BuildContext context,String email) {
   showModalBottomSheet(
       context: context,
       builder: (context) {
@@ -727,9 +738,17 @@ void bottomsheet(BuildContext context) {
                 tileColor: Colors.grey[100],
               ),
               InkWell(
-                onTap: () {},
+                onTap: () {
+                 
+                },
                 child: ListTile(
-                  onTap: () {},
+                  onTap: () {
+                    DocumentReference documentReference =
+                    FirebaseFirestore.instance.collection("Leads").doc(email);
+                    documentReference.delete();
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
                   dense: true,
                   title: Row(
                     children: [

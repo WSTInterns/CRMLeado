@@ -16,37 +16,7 @@ class StartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  @override
-  _MyHomePageState createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  @override
-  void initState() {
-    super.initState();
-    Timer(
-        Duration(seconds: 2),
-        () => Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => StartScreenPage())));
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return const Scaffold(
-      body: Center(
-        child: Text('LEADO',
-            style: TextStyle(
-              fontSize: 40,
-              fontWeight: FontWeight.bold,
-              fontFamily: "Montserrat",
-            )),
-      ),
+      home: StartScreenPage(),
     );
   }
 }
@@ -79,14 +49,7 @@ class StartScreenPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: InkWell(
-                    onTap: () {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeBar(title: ""),
-                        ),
-                      );
-                    },
+                    onTap: () {},
                     child: Column(
                       children: [
                         Icon(

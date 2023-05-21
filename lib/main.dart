@@ -63,7 +63,7 @@ class MyApp extends StatelessWidget {
           ),
         ),
         // home: SplashScreen(),
-        home: StartScreen(),
+        home: SplashScreen(),
         debugShowCheckedModeBanner: false,
       ),
     );

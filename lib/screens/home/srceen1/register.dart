@@ -1,7 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-
+import 'package:email_validator/email_validator.dart';
 import 'package:brew_crew/screens/home/phone.dart';
 import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:intl/intl.dart';
@@ -214,8 +214,11 @@ class _StoreContactState extends State<StoreContact> {
                     validator: (value) {
                       // Check if value is valid phone number with 10 digits
                       if (value == null || value.isEmpty) {
-                        return 'Please enter a phone number';
+                        return 'Please enter a Email';
                       }
+                      else if(!EmailValidator.validate(value)){
+                          return 'Please Enter a Valid Email';
+                        }
                       return null;
                     },
                     onChanged: (value) {

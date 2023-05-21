@@ -152,10 +152,16 @@ class _ClientProfState extends State<ClientProf> {
             fontSize: 17,
           ),
         ),
-        // leading: const Icon(
-        //   Icons.arrow_back_ios,
-        //   color: Colors.black,
-        // ),
+        leading: IconButton(
+          icon: const Icon(
+            Icons.arrow_back_ios,
+            color: Colors.black,
+          ),
+          tooltip: 'Show Snackbar',
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
 
         elevation: 0,
         actions: [

@@ -87,7 +87,7 @@ class DividerExample extends StatelessWidget {
 */
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
-
+import 'package:email_validator/email_validator.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_crew/screens/home/homescreen.dart';
@@ -96,8 +96,8 @@ import 'package:brew_crew/screens/home/phone.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 class manual extends StatefulWidget {
-  manual({super.key});
-
+  manual({super.key,this.toggle = false});
+  bool toggle;
   @override
   State<manual> createState() => _manualState();
 }
@@ -156,10 +156,17 @@ class _manualState extends State<manual> {
             tooltip: 'Back',
             onPressed: () {
               //  Navigator.pop(context);
+              if (widget.toggle) {
+                Navigator.pop(context);
+              }
+              else{
+
+              
               Navigator.of(context).pushReplacement(MaterialPageRoute(
                   builder: (context) => HomeBar(
                         title: "",
                       )));
+              }
             },
           ),
         ),
@@ -190,6 +197,13 @@ class _manualState extends State<manual> {
                   Padding(
                     padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                     child: TextFormField(
+                      validator: (value) {
+                        if (value!.isEmpty) {
+                          return "Required";
+                        } else {
+                          return null;
+                        }
+                      },
                       onChanged: (value) => {getName(value)},
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -282,9 +296,14 @@ class _manualState extends State<manual> {
                     padding: EdgeInsets.fromLTRB(15, 0, 15, 0),
                     child: TextFormField(
                       validator: (value) {
+                        
                         if (value!.isEmpty) {
                           return "Required";
-                        } else {
+                        } 
+                        else if(!EmailValidator.validate(value)){
+                          return 'Invalid Email';
+                        }
+                        else {
                           return null;
                         }
                       },

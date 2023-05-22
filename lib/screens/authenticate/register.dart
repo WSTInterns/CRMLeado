@@ -2,7 +2,7 @@ import 'package:brew_crew/models/loginuser.dart';
 import 'package:brew_crew/services/auth.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_crew/screens/authenticate/regAdminInfo.dart';
-import 'package:email_validator/email_validator.dart';
+
 
 class Register extends StatefulWidget{
 
@@ -29,13 +29,12 @@ class _Register extends State<Register>{
         controller: _email,
         autofocus: false,
         validator: (value) {
-            if (value == null || value.isEmpty) {
-                    return 'Please enter an email.';
+          if (value != null) {
+            if (value.contains('@') && value.endsWith('.com')) {
+              return null;
             }
-            else if(!EmailValidator.validate(value)){
-                          return 'Invalid Email';
-            }
-            return null;
+            return 'Enter a Valid Email Address';
+          }
         },
         decoration: InputDecoration(
             contentPadding: const EdgeInsets.fromLTRB(20.0, 15.0, 20.0, 15.0),

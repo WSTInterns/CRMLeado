@@ -3,7 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:email_validator/email_validator.dart';
+
 class RegisterSalesPersonScreen extends StatefulWidget {
   const RegisterSalesPersonScreen({super.key});
 
@@ -140,9 +140,6 @@ class _RegisterSalesPersonScreenState extends State<RegisterSalesPersonScreen> {
                   if (value == null || value.isEmpty) {
                     return 'Please enter an email.';
                   }
-                  else if(!EmailValidator.validate(value)){
-                          return 'Invalid Email';
-                        }
                   return null;
                 },
               ),

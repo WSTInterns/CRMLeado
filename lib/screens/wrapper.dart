@@ -6,7 +6,6 @@ import 'authenticate/handler.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'authenticate/regAdminInfo.dart';
 import 'home/adminPath/adminHome.dart';
-import 'home/start_screen.dart';
 
 class Wrapper extends StatelessWidget {
   @override
@@ -31,7 +30,7 @@ class Wrapper extends StatelessWidget {
           if (isAdmin == '1') {
             return adminHome();
           } else {
-            return StartScreen();
+            return HomeBar(title: "",);
           }
         },
       );

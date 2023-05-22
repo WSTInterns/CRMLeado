@@ -17,7 +17,6 @@ class StartScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       home: StartScreenPage(),
-      debugShowCheckedModeBanner: false,
     );
   }
 }
@@ -29,11 +28,9 @@ class StartScreenPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       // backgroundColor: Color(0xff3C4048),
-      
       appBar: AppBar(
         elevation: 0,
         backgroundColor: Colors.white,
-        
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(15, 0, 15, 75),
@@ -52,14 +49,7 @@ class StartScreenPage extends StatelessWidget {
                     borderRadius: BorderRadius.circular(15),
                   ),
                   child: InkWell(
-                    onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => HomeBar(title: '',),
-                        ),
-                      );
-                    },
+                    onTap: () {},
                     child: Column(
                       children: [
                         Icon(
@@ -92,10 +82,10 @@ class StartScreenPage extends StatelessWidget {
                   ),
                   child: InkWell(
                     onTap: () {
-                      Navigator.push(
+                      Navigator.pushReplacement(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => UploadExcel(toggle: true,),
+                          builder: (context) => UploadExcel(),
                         ),
                       );
                     },
@@ -136,9 +126,9 @@ class StartScreenPage extends StatelessWidget {
                   ),
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).push(
+                      Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (context) => manual(toggle: true,),
+                          builder: (context) => manual(),
                         ),
                       );
                     },
@@ -174,9 +164,9 @@ class StartScreenPage extends StatelessWidget {
                   ),
                   child: InkWell(
                     onTap: () {
-                      Navigator.of(context).push(
+                      Navigator.of(context).pushReplacement(
                         MaterialPageRoute(
-                          builder: (BuildContext context) => MyAppPb(toggle: true,),
+                          builder: (BuildContext context) => MyAppPb(),
                         ),
                       );
                     },

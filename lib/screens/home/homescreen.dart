@@ -86,3 +86,68 @@ class _HomeBarState extends State<HomeBar> {
     );
   }
 }
+/*
+import 'package:flutter/material.dart';
+import 'package:radhe/Followup.dart';
+import 'package:radhe/client.dart';
+import 'package:radhe/contents.dart';
+import 'package:radhe/more.dart';
+
+void main() {
+  runApp(const HomeBar());
+}
+
+class HomeBar extends StatelessWidget {
+  const HomeBar({super.key});
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+      ),
+      home: const HomeBar(title: 'Flutter Demo Home Page'),
+    );
+  }
+}
+
+class HomeBar extends StatefulWidget {
+  const HomeBar({super.key, required this.title});
+  final String title;
+  @override
+  State<HomeBar> createState() => _HomeBarState();
+}
+
+class _HomeBarState extends State<HomeBar> {
+  List pages=[
+    HomePage(),
+Contents(),
+Follow(),
+Moree(),
+  ];
+  int currentIndex=0;
+  void onTap(int index)
+  {
+setState(() {
+  currentIndex=index;
+});
+  }
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: pages[currentIndex],
+        bottomNavigationBar: BottomNavigationBar(
+          selectedItemColor: Colors.black54,
+          onTap: onTap,
+          currentIndex: currentIndex,
+          unselectedItemColor:Colors.grey.withOpacity(0.5),
+          items: [
+            BottomNavigationBarItem(label: "Clients", icon: Icon(Icons.apps)),//clients
+            BottomNavigationBarItem(label: "Contents",icon: Icon(Icons.bar_chart)),//content
+            BottomNavigationBarItem(label: "Follow Ups",icon: Icon(Icons.follow_the_signs)),//follow
+            BottomNavigationBarItem(label: "More",icon: Icon(Icons.more)),//more
+          ]), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+*/

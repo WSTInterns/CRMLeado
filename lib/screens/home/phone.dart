@@ -99,7 +99,7 @@ class phonebook extends StatelessWidget {
                       fontSize: 20,
                       color: Colors.white),
                   onTap: () {
-                    Navigator.pushReplacement(
+                    Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context) => UploadExcel()),
                     );

@@ -5,11 +5,20 @@ import './excel.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:url_launcher/url_launcher.dart';
 
-
-
 class UploadExcel extends StatelessWidget {
-   UploadExcel ({super.key,this.toggle = false});
-   bool toggle;
+  const UploadExcel({super.key});
+
+  // This widget is the root of your application.
+  @override
+  Widget build(BuildContext context) {
+    return const MaterialApp(
+      home: UploadExcelPage(),
+    );
+  }
+}
+
+class UploadExcelPage extends StatelessWidget {
+  const UploadExcelPage({super.key});
   Future<FilePickerResult?> selectExcelFile() async {
     FilePickerResult? result = await FilePicker.platform.pickFiles(
       type: FileType.custom,
@@ -22,7 +31,12 @@ class UploadExcel extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        
+        // shape: const Border(
+        //   bottom: BorderSide(
+        //     color: Color.fromRGBO(50, 50, 93, 0.25),
+        //     width: 0.3,
+        //   ),
+        // ),
         backgroundColor: Colors.white,
         title: const Text(
           'Upload Excel',
@@ -40,23 +54,18 @@ class UploadExcel extends StatelessWidget {
           ),
           tooltip: 'Show Snackbar',
           onPressed: () {
-            if (toggle) {
-              Navigator.pop(context);
-            }
-            else{
-              Navigator.pushReplacement(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const HomeBar(
-                            title: '',
-                          )));
-              // Navigator.push(
-              //     context,
-              //     MaterialPageRoute(
-              //         builder: (context) => HomeBar(
-              //               title: '',
-              //             )));
-                    }
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => const HomeBar(
+                          title: '',
+                        )));
+            Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) => HomeBar(
+                          title: '',
+                        )));
           },
         ),
         elevation: 0,
@@ -126,7 +135,7 @@ class UploadExcel extends StatelessWidget {
             ),
             InkWell(
               onTap: () {
-                Navigator.of(context).push(MaterialPageRoute(
+                Navigator.of(context).pushReplacement(MaterialPageRoute(
                     builder: (BuildContext context) => const ExcelPage()));
                 // FilePickerResult? result =async await selectExcelFile();
                 // if (result != null) {

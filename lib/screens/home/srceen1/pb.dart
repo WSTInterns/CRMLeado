@@ -20,20 +20,20 @@ Map<int, Color> color = {
 };
 
 class MyAppPb extends StatelessWidget {
-   MyAppPb({super.key,this.toggle =false});
-  bool toggle;
+  const MyAppPb({super.key});
+
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return ScreenUtilInit(
-      builder: ((context, child) => PhoneScreen(togle:toggle)),
+      builder: ((context, child) => PhoneScreen()),
     );
   }
 }
 
 class PhoneScreen extends StatefulWidget {
-  PhoneScreen({super.key,required this.togle});
-  bool togle;
+  const PhoneScreen({super.key});
+
   @override
   State<PhoneScreen> createState() => _PhoneScreenState();
 }
@@ -97,15 +97,10 @@ class _PhoneScreenState extends State<PhoneScreen> {
           ),
           tooltip: 'Show Snackbar',
           onPressed: () {
-            if (widget.togle) {
-              Navigator.pop(context);
-            }
-            else{
             Navigator.of(context).pushReplacement(MaterialPageRoute(
                 builder: (context) => HomeBar(
                       title: '',
                     )));
-            }
           },
         ),
         centerTitle: true,

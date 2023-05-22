@@ -211,7 +211,7 @@ class _manualState extends State<manual> {
                           borderSide:
                               BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
-                        hintText: 'Enter the name of the Client',
+                        hintText: 'Enter a search term',
                         hintStyle: TextStyle(
                           fontFamily: "Montserrat",
                         ),

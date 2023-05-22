@@ -1,7 +1,6 @@
 import 'package:brew_crew/screens/home/followUpForm.dart';
 import 'package:brew_crew/screens/home/followUp_notes.dart';
 import 'package:brew_crew/screens/home/phonecall.dart';
-import 'package:brew_crew/stepper%20(1).dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -312,43 +311,37 @@ class _ClientProfState extends State<ClientProf> {
               SizedBox(
                 height: 10,
               ),
-              GestureDetector(
-                onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => SendMessage(
-                          phoneNo: widget.phoneNo, email: widget.email)));
-                },
-                child: Container(
-                  width: double.infinity,
-                  height: 80,
-                  padding: EdgeInsets.fromLTRB(10, 15, 10, 0),
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    color: Colors.white,
-                    boxShadow: [
-                      BoxShadow(
-                        color: const Color.fromRGBO(50, 50, 93, 0.25)
-                            .withOpacity(0.08),
-                        // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
-                        spreadRadius: 5,
-                        blurRadius: 20,
-                        offset:
-                            const Offset(0, 8), // changes position of shadow
-                      ),
-                    ],
-                  ),
-                  child: ListTile(
+              Container(
+                width: double.infinity,
+                height: 80,
+                padding: EdgeInsets.fromLTRB(10, 15, 10, 0),
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: const Color.fromRGBO(50, 50, 93, 0.25)
+                          .withOpacity(0.08),
+                      // color: const Color.fromRGBO(0, 0, 0, 0.3).withOpacity(0.1),
+                      spreadRadius: 5,
+                      blurRadius: 20,
+                      offset:
+                          const Offset(0, 8), // changes position of shadow
+                    ),
+                  ],
+                ),
+                child: ListTile(
             title: FutureBuilder<String>(
               future: notesFuture,
               builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-                if (snapshot.connectionState == ConnectionState.waiting) {
-                  return Center(child: CircularProgressIndicator());
-                } else if (snapshot.hasError) {
-                  return Text('Error: ${snapshot.error}');
-                } else {
-                  String notes = snapshot.data ?? '';
-                  return Column(
+              if (snapshot.connectionState == ConnectionState.waiting) {
+                return Center(child: CircularProgressIndicator());
+              } else if (snapshot.hasError) {
+                return Text('Error: ${snapshot.error}');
+              } else {
+                String notes = snapshot.data ?? '';
+                return Column(
   crossAxisAlignment: CrossAxisAlignment.start,
   children: [
     Text(
@@ -373,11 +366,10 @@ class _ClientProfState extends State<ClientProf> {
   ],
 )
 ;
-                }
+              }
               },
             ),
           ),
-                ),
               ),
               SizedBox(
                 height: 10,

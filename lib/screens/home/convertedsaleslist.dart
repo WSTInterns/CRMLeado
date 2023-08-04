@@ -8,7 +8,7 @@ import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:brew_crew/screens/home/srceen1/pb.dart';
 import 'package:brew_crew/screens/home/srceen1/addmanual.dart';
 import 'salesdetails.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 
 class convertedsales extends StatefulWidget {
   static const IconData remove_circle_outline =
@@ -23,6 +23,7 @@ class _convertedsalesState extends State<convertedsales> {
   ValueNotifier<bool> isDialOpen = ValueNotifier(false);
   String name='', email='';
   int phoneNo=0;
+  User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     return WillPopScope(
@@ -71,7 +72,9 @@ class _convertedsalesState extends State<convertedsales> {
               alignment: Alignment.topCenter,
               child: StreamBuilder<QuerySnapshot>(
                 stream:
-                    FirebaseFirestore.instance.collection("Sales").snapshots(),
+                    FirebaseFirestore.instance.collection("Sales")
+                    .where('uid', isEqualTo:user?.uid )
+                    .snapshots(),
                 builder: ((context, AsyncSnapshot snapshot) {
                   if (snapshot.hasError) {
                     print('Error: ${snapshot.error}');

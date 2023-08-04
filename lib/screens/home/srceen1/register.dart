@@ -1,4 +1,5 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:email_validator/email_validator.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -216,10 +217,13 @@ class _StoreContactState extends State<StoreContact> {
                       if (value == null || value.isEmpty) {
                         return 'Please enter a phone number';
                       }
+                      else if (EmailValidator.validate(value)){
+                          return "Invalid Email";
+                        }
                       return null;
                     },
                     onChanged: (value) {
-                      this.email = value;
+                      this.email = value; 
                     },
                     keyboardType: TextInputType.emailAddress,
                     decoration: InputDecoration(

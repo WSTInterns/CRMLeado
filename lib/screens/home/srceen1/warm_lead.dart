@@ -3,7 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'clientside.dart';
-
+import 'package:firebase_auth/firebase_auth.dart';
 // import 'package:get/get.dart';
 // import 'package:brew_crew/screens/home/srceen1/leadmain.dart';
 
@@ -33,6 +33,7 @@ class _WarmLeadsState extends State<WarmLeads> {
   bool _showButton = false;
   final CollectionReference leadsCollection =
       FirebaseFirestore.instance.collection('Leads');
+      User? user = FirebaseAuth.instance.currentUser;
 
   converttohot() {
     DocumentReference documentReference =
@@ -227,6 +228,7 @@ class _WarmLeadsState extends State<WarmLeads> {
           child: StreamBuilder<QuerySnapshot>(
             stream: leadsCollection
                 .where('activity_status', isEqualTo: 'warm')
+                .where('uid', isEqualTo:user?.uid )
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {

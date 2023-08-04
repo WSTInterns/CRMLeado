@@ -19,6 +19,11 @@ class _SendMessageState extends State<SendMessage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('Select a Message',
+                style: TextStyle(
+                    fontFamily: "Montserrat",
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold)),
         backgroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(

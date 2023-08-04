@@ -9,6 +9,8 @@ import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
 //import 'package:firestore_storage';
 
 //import 'package:validate/main.dart';
@@ -28,8 +30,10 @@ class _ProductScreenState extends State<ProductScreen> {
   File? pickedImage;
   String base64Image = "";
   String imageUrl = "";
+  
   CollectionReference _reference =
       FirebaseFirestore.instance.collection('pages');
+      
   // TextEditingController _addItemController = TextEditingController();
   // late DocumentReference linkRef;
   // List<String> videoID = [];
@@ -350,7 +354,7 @@ class _ProductScreenState extends State<ProductScreen> {
       debugPrint(error.toString());
     }
   }
-
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -556,131 +560,12 @@ class _ProductScreenState extends State<ProductScreen> {
                 ),
               ),
             ),
-            // validator: (value) {
-            //       if (value == null || value.isEmpty) {
-            //         return 'Please enter some text';
-            //       }
-            //       return null;
-            //     },
-            // Padding(
-            //   padding: const EdgeInsets.all(5),
-            //   child: Container(
-            //     margin: const EdgeInsets.all(3),
-            //     decoration: BoxDecoration(
-            //       border: Border.all(color: Color.fromARGB(255, 92, 93, 95)),
-            //       borderRadius: BorderRadius.all(Radius.circular(3)),
-            //     ),
-            //     child: InkWell(
-            //       //onTap: () => _showActionSheet(context),
-            //       onTap: () => _bottomsheett(context),
-            //       child: Container(
-            //         margin: const EdgeInsets.all(10.0),
-            //         color: Color(0xffffffff),
-            //         width: 48.0,
-            //         height: 40.0,
-
-            //         //
-            //         child: pickedImage != null
-            //             ? Image.file(
-            //                 pickedImage!,
-            //                 width: 170,
-            //                 height: 170,
-            //                 fit: BoxFit.cover,
-            //               )
-            //             // : Image.network(
-            //             //     'https://upload.wikimedia.org/wikipedia/commons/5/5f/Alberto_conversi_profile_pic.jpg',
-            //             //     width: 170,
-            //             //     height: 170,
-            //             //     fit: BoxFit.cover,
-            //             //
-            //             : Row(
-            //                 children: [
-            //                   const Icon(Icons.add),
-            //                   const Icon(Icons.youtube_searched_for),
-            //                   Text('Add YouTube Video'),
-            //                 ],
-            //               ),
-            //       ),
-            //     ),
-            //   ),
-            // ),
-
-            // Column(
-            //   children: [
-            //     Container(
-            //       margin: EdgeInsets.symmetric(horizontal: 8),
-            //       child: TextField(
-            //         controller: _addItemController,
-            //         onEditingComplete: () {
-            //           if (utube.hasMatch(_addItemController.text)) {
-            //             _addItemFuntion();
-            //           } else {
-            //             FocusScope.of(this.context).unfocus();
-            //             _addItemController.clear();
-            //             Flushbar(
-            //               title: 'Invalid Link',
-            //               message: 'Please provide a valid link',
-            //               duration: Duration(seconds: 3),
-            //               icon: Icon(
-            //                 Icons.error_outline,
-            //                 color: Colors.red,
-            //               ),
-            //             )..show(context);
-            //           }
-            //         },
-            //         style: TextStyle(fontSize: 16),
-            //         decoration: InputDecoration(
-            //             labelText: 'Your Video URL',
-            //             suffixIcon: GestureDetector(
-            //               child: Icon(Icons.add, size: 32),
-            //               onTap: () {
-            //                 if (utube.hasMatch(_addItemController.text)) {
-            //                   _addItemFuntion();
-            //                 } else {
-            //                   FocusScope.of(this.context).unfocus();
-            //                   _addItemController.clear();
-            //                   Flushbar(
-            //                     title: 'Invalid Link',
-            //                     message: 'Please provide a valid link',
-            //                     duration: Duration(seconds: 3),
-            //                     icon: Icon(
-            //                       Icons.error_outline,
-            //                       color: Colors.red,
-            //                     ),
-            //                   )..show(context);
-            //                 }
-            //               },
-            //             )),
-            //       ),
-            //     ),
-            //     Flexible(
-            //         child: Container(
-            //             margin: EdgeInsets.symmetric(horizontal: 4),
-            //             child: ListView.builder(
-            //                 itemCount: videoID.length,
-            //                 itemBuilder: (context, index) => Container(
-            //                       margin: EdgeInsets.all(8),
-            //                       child: YoutubePlayer(
-            //                         controller: YoutubePlayerController(
-            //                             initialVideoId:
-            //                                 YoutubePlayer.convertUrlToId(
-            //                                     videoID[index])!,
-            //                             flags: YoutubePlayerFlags(
-            //                               autoPlay: false,
-            //                             )),
-            //                         showVideoProgressIndicator: true,
-            //                         progressIndicatorColor: Colors.blue,
-            //                         progressColors: ProgressBarColors(
-            //                             playedColor: Colors.blue,
-            //                             handleColor: Colors.blueAccent),
-            //                       ),
-            //                     )))),
-            //   ],
-            // ),
+            
             Container(
               padding: EdgeInsets.fromLTRB(15, 25, 15, 0),
               child: ElevatedButton(
                 onPressed: () async {
+                  
                   // if (!imageUrl.isEmpty) {
                   //   ScaffoldMessenger.of(context).showSnackBar(
                   //       SnackBar(content: Text('Please upload an image')));
@@ -692,22 +577,16 @@ class _ProductScreenState extends State<ProductScreen> {
                     // you'd often call a server or save the information in a database.
                     String tName = titleName.text;
                     String dName = DescriptionName.text;
+                    User? user = FirebaseAuth.instance.currentUser;
                     Map<String, String> dataToSend = {
                       'title': tName,
                       'description': dName,
                       'images': imageUrl,
+                      'uid': user!.uid,
                     };
                     _reference.add(dataToSend);
                     Navigator.pop(context);
-                    // print("Validated");
-                    // print(titleName.text);
-                    // print(DescriptionName.text);
-                    // print(
-                    //     "Title Name ${titleName.text}, Description ${DescriptionName.text}");
-                    // Map userRequiredData = {
-                    //   "title_name": titleName.text,
-                    //   "description": DescriptionName.text
-                    // };
+                    
                   } else {
                     print("Please enter the title");
                   }

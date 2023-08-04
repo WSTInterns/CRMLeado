@@ -96,80 +96,92 @@ class _RegisterSalesPersonScreenState extends State<RegisterSalesPersonScreen> {
       appBar: AppBar(
         title: const Text('Register Sales Person'),
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Form(
-          key: _formKey,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            children: [
-              TextFormField(
-                controller: nameController,
-                decoration: const InputDecoration(labelText: 'Name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter name.';
-                  }
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Form(
+            key: _formKey,
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.stretch,
+                children: [
+                  TextFormField(
+                    controller: nameController,
+                    decoration: const InputDecoration(labelText: 'Name'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter name.';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: companyNameController,
+                    decoration: const InputDecoration(labelText: 'Company Name'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter company name.';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: phoneNoController,
+                    decoration: const InputDecoration(labelText: 'Phone Number'),
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter phone number.';
+                      }
+                      else if (value.trim().length < 8) {
+                        return 'Password must be 10 characters in length';
+                      }
+                      return null;
+                    },
+                  ),
+                  TextFormField(
+                    controller: _emailController,
+                    decoration: const InputDecoration(labelText: 'Email'),
+                    validator: (value) {
+              if (value != null) {
+                if (value.contains('@') && value.endsWith('.com')) {
                   return null;
-                },
+                }
+                return 'Enter a Valid Email Address';
+              }
+                    },
+                  ),
+                  const SizedBox(height: 16.0),
+                  TextFormField(
+                    controller: _passwordController,
+                    decoration: const InputDecoration(labelText: 'Password'),
+                    obscureText: true,
+                    validator: (value) {
+              if (value == null || value.trim().isEmpty) {
+                return 'This field is required';
+              }
+              else if (value.trim().length < 8) {
+                return 'Password must be at least 8 characters in length';
+              }
+              // Return null if the entered password is valid
+              return null;
+                    },
+                  ),
+                  const SizedBox(height: 16.0),
+                  ElevatedButton(
+                    onPressed: () {
+                      if (_formKey.currentState!.validate()) {
+                        _registerSalesPerson();
+                        Navigator.push(context,
+                            MaterialPageRoute(builder: (context) => adminHome()));
+                      }
+                    },
+                    child: const Text('Register'),
+                  ),
+            
+                  // Text user_uid to see the current user is admin or not, comment it out later!!
+                  // Text(" for admin $userMail")
+                ],
               ),
-              TextFormField(
-                controller: companyNameController,
-                decoration: const InputDecoration(labelText: 'Comapany Name'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter company name.';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: phoneNoController,
-                decoration: const InputDecoration(labelText: 'Phone Number'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter phone number.';
-                  }
-                  return null;
-                },
-              ),
-              TextFormField(
-                controller: _emailController,
-                decoration: const InputDecoration(labelText: 'Email'),
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter an email.';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16.0),
-              TextFormField(
-                controller: _passwordController,
-                decoration: const InputDecoration(labelText: 'Password'),
-                obscureText: true,
-                validator: (value) {
-                  if (value == null || value.isEmpty) {
-                    return 'Please enter a password.';
-                  }
-                  return null;
-                },
-              ),
-              const SizedBox(height: 16.0),
-              ElevatedButton(
-                onPressed: () {
-                  if (_formKey.currentState!.validate()) {
-                    _registerSalesPerson();
-                    Navigator.push(context,
-                        MaterialPageRoute(builder: (context) => adminHome()));
-                  }
-                },
-                child: const Text('Register'),
-              ),
-
-              // Text user_uid to see the current user is admin or not, comment it out later!!
-              Text(" for admin $userMail")
-            ],
+            
           ),
         ),
       ),

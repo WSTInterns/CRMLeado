@@ -34,7 +34,7 @@ class RegisterScreenState extends State<RegisterScreen> {
 
   create() async {
     DocumentReference doc =
-        await FirebaseFirestore.instance.collection("users").doc(userMailId);
+        await FirebaseFirestore.instance.collection("users").doc(userUid);
 
     Map<String, dynamic> users = {
       "userUid": userUid,

@@ -62,7 +62,7 @@ class _MoreeState extends State<Moree> {
             onTap: () {},
             child: Container(
               height: 70,
-              decoration: BoxDecoration(
+              decoration: BoxDecoration(   
                 borderRadius: BorderRadius.circular(10),
                 color: Colors.white,
                 boxShadow: [
@@ -262,7 +262,11 @@ class _MoreeState extends State<Moree> {
                       ),
                       onPressed: () {
                         signOut();
-                        Navigator.of(context).pop();
+                        Navigator.pushAndRemoveUntil(
+  context,
+  MaterialPageRoute(builder: (context) => Handler()),
+  (Route<dynamic> route) => false, // Remove all routes in the stack
+);
                         
                       },
                     ),

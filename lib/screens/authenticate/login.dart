@@ -3,6 +3,8 @@ import 'package:brew_crew/screens/authenticate/resetPassword.dart';
 import 'package:brew_crew/services/auth.dart';
 import 'package:flutter/material.dart';
 
+import '../wrapper.dart';
+
 class Login extends StatefulWidget {
   final Function? toggleView;
   Login({this.toggleView});
@@ -108,7 +110,13 @@ class _Login extends State<Login> {
                       // actions: [Navigator.of(context).pushReplacement(MaterialPageRoute(builder: (context)=>Wrapper()))],
                     );
                   });
-            } else {}
+            } else {
+                Navigator.pushAndRemoveUntil(
+  context,
+  MaterialPageRoute(builder: (context) => Wrapper()),
+  (Route<dynamic> route) => false, // Remove all routes in the stack
+);
+              }
           }
         },
         child: Text(

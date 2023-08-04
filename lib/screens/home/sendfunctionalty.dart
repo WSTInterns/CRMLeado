@@ -27,7 +27,6 @@ class _SendFunctionState extends State<SendFunction> {
   sendemail() async {
     final Uri emailUri = Uri(
         scheme: 'mailto',
-        queryParameters: {},
         path: '${widget.email}',
         query: 'subject=${widget.title}&body=${widget.message}');
     try {
@@ -163,7 +162,7 @@ class _SendFunctionState extends State<SendFunction> {
                   sendemail();
                   Navigator.pop(context);
                   Navigator.pop(context);
-                  Navigator.pop(context);
+                  // Navigator.pop(context);
                 }
               },
               child: Container(

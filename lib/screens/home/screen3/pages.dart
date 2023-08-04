@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'product.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class pages extends StatefulWidget {
   pages({super.key});
@@ -19,17 +20,12 @@ class pages extends StatefulWidget {
 
 class _pagesState extends State<pages> {
   //_stream = _reference.snapshots();
-  CollectionReference _reference =
-      FirebaseFirestore.instance.collection('pages');
+  User? user = FirebaseAuth.instance.currentUser;
+  
 
   //_reference.get()  ---> returns Future<QuerySnapshot>
   //_reference.snapshots()--> Stream<QuerySnapshot> -- realtime updates
-  late Stream<QuerySnapshot> _stream;
-  initState() {
-    super.initState();
-
-    _stream = _reference.snapshots();
-  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -63,18 +59,20 @@ class _pagesState extends State<pages> {
       //   ],
       // )
       body: StreamBuilder<QuerySnapshot>(
-        stream: _stream,
-        builder: (BuildContext context, AsyncSnapshot snapshot) {
+        stream:FirebaseFirestore.instance
+            .collection('pages')
+            .where('uid', isEqualTo:user?.uid )
+            .snapshots(),
+        builder: ( context, snapshot) {
           //Check error
-          if (snapshot.hasError) {
-            return Center(child: Text('Some error occurred ${snapshot.error}'));
+          if (!snapshot.hasData) {
+            return Center(child: Text("No media uploaded Yet!!"));
           }
-
           //Check if data arrived
           if (snapshot.hasData) {
             //get the data
-            QuerySnapshot querySnapshot = snapshot.data;
-            List<QueryDocumentSnapshot> documents = querySnapshot.docs;
+            QuerySnapshot? querySnapshot = snapshot.data;
+            List<QueryDocumentSnapshot> documents = querySnapshot!.docs;
 
             //Convert the documents to Maps
             List<Map> items = documents.map((e) => e.data() as Map).toList();

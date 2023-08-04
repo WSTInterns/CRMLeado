@@ -1,8 +1,11 @@
+import 'dart:ffi';
+
 import 'package:brew_crew/services/auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:brew_crew/screens/authenticate/registerSp.dart';
 import '../../authenticate/handler.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class adminHome extends StatefulWidget {
   const adminHome({super.key});
@@ -15,10 +18,15 @@ class adminHome extends StatefulWidget {
 
 class _adminHome extends State<adminHome> {
   final AuthService _auth = AuthService();
+  User? user = FirebaseAuth.instance.currentUser;
 
   signOut() async {
     await _auth.signOut();
-    Navigator.push(context, MaterialPageRoute(builder: (context) => Handler()));
+    Navigator.pushAndRemoveUntil(
+  context,
+  MaterialPageRoute(builder: (context) => Handler()),
+  (Route<dynamic> route) => false, // Remove all routes in the stack
+);
   }
 
   @override
@@ -53,6 +61,7 @@ class _adminHome extends State<adminHome> {
         stream: FirebaseFirestore.instance
             .collection('users')
             .where('isAdmin', isEqualTo: "0")
+            .where( 'adminID', isEqualTo:user?.uid )
             .snapshots(),
         builder: (context, snapshot) {
           if (snapshot.hasError) {

@@ -3,6 +3,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'clientside.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // import 'package:get/get.dart';
 // import 'package:brew_crew/screens/home/srceen1/leadmain.dart';
@@ -33,6 +34,7 @@ class _HotLeadsState extends State<HotLeads> {
   bool _showButton = false;
   final CollectionReference leadsCollection =
       FirebaseFirestore.instance.collection('Leads');
+      User? user = FirebaseAuth.instance.currentUser;
 
   @override
   Widget build(BuildContext context) {
@@ -60,6 +62,7 @@ class _HotLeadsState extends State<HotLeads> {
           child: StreamBuilder<QuerySnapshot>(
             stream: leadsCollection
                 .where('activity_status', isEqualTo: 'hot')
+                .where('uid', isEqualTo:user?.uid )
                 .snapshots(),
             builder: (context, snapshot) {
               if (snapshot.hasError) {
@@ -140,6 +143,7 @@ class _HotLeadsState extends State<HotLeads> {
                                       people.any((person) => person.isChecked);
                                   salesperson = people[index].name;
                                   salesmail = people[index].email;
+                                  phonenumber = people[index].phoneNo;
                                 });
                               },
                               activeColor: Color(0Xff4B56D2),

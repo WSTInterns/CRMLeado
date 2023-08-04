@@ -308,9 +308,9 @@ class _ClientProfState extends State<ClientProf> {
               ),
               GestureDetector(
                 onTap: () {
-                  Navigator.of(context).push(MaterialPageRoute(
-                      builder: (BuildContext context) => SendMessage(
-                          phoneNo: widget.phoneNo, email: widget.email)));
+                  // Navigator.of(context).push(MaterialPageRoute(
+                  //     builder: (BuildContext context) => SendMessage(
+                  //         phoneNo: widget.phoneNo, email: widget.email)));
                 },
                 child: Container(
                   width: double.infinity,
@@ -462,7 +462,8 @@ class _ClientProfState extends State<ClientProf> {
                 onTap: () {
                   Navigator.of(context).push(MaterialPageRoute(
                       builder: (BuildContext context) =>
-                          MyStepperForm(email: widget.email
+                          MyStepperForm(email: widget.email,cname: widget.name,
+                          
                               // notes: notes,
                               )));
                 },
@@ -737,11 +738,47 @@ void bottomsheet(BuildContext context,String email) {
                 },
                 child: ListTile(
                   onTap: () {
-                    DocumentReference documentReference =
-                    FirebaseFirestore.instance.collection("Leads").doc(email);
-                    documentReference.delete();
-                    Navigator.pop(context);
-                    Navigator.pop(context);
+                    // DocumentReference documentReference =
+                    // FirebaseFirestore.instance.collection("Leads").doc(email);
+                    // documentReference.delete();
+                    // Navigator.pop(context);
+                    // Navigator.pop(context);
+                    showDialog(
+                      context: context,
+                      builder: (BuildContext context) => CupertinoAlertDialog(
+                        content: const Text(
+                          'Are you sure you want to delete this client?',
+                          style: TextStyle(
+                            fontFamily: "Montserrat",
+                          ),
+                        ),
+                        actions: [
+                          CupertinoDialogAction(
+                            child: const Text(
+                              'Yes',
+                              style: TextStyle(color: const Color(0Xff4B56D2)),
+                            ),
+                            onPressed: () {
+                              DocumentReference documentReference =
+                              FirebaseFirestore.instance.collection("Leads").doc(email);
+                              documentReference.delete();
+                              Navigator.pop(context);
+                              Navigator.pop(context);
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                          CupertinoDialogAction(
+                            child: const Text('No',
+                                style: TextStyle(
+                                    fontFamily: "Montserrat",
+                                    color: const Color(0Xff4B56D2))),
+                            onPressed: () {
+                              Navigator.of(context).pop();
+                            },
+                          ),
+                        ],
+                      ),
+                    );
                   },
                   dense: true,
                   title: Row(

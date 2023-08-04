@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'upload_file.dart';
 import 'package:syncfusion_flutter_pdfviewer/pdfviewer.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class contentFilesScreen extends StatefulWidget {
   String? title, message;
@@ -15,6 +16,7 @@ class contentFilesScreen extends StatefulWidget {
 }
 
 class _contentFilesScreenState extends State<contentFilesScreen> {
+   User? user = FirebaseAuth.instance.currentUser;
   @override
   Widget build(BuildContext context) {
     void _openPdf(BuildContext context, String pdfUrl) {
@@ -52,12 +54,13 @@ class _contentFilesScreenState extends State<contentFilesScreen> {
       body: StreamBuilder<QuerySnapshot>(
         stream: FirebaseFirestore.instance
             .collection('pdfs')
-            .orderBy('createdAt', descending: true)
+            .where('salesPersonUid', isEqualTo:user?.uid )
             .snapshots(),
         builder: (context, snapshot) {
           if (!snapshot.hasData) {
             return Center(child: Text("No files uploaded Yet!!"));
           }
+          if (snapshot.hasData) {
           List<DocumentSnapshot> pdfDocs = snapshot.data!.docs;
           return ListView.builder(
             itemCount: pdfDocs.length,
@@ -110,7 +113,10 @@ class _contentFilesScreenState extends State<contentFilesScreen> {
               );
             },
           );
-        },
+          }
+        
+        return Placeholder();
+        }
       ),
     );
   }

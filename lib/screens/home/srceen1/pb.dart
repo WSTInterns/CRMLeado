@@ -98,13 +98,13 @@ class _PhoneScreenState extends State<PhoneScreen> {
           tooltip: 'Show Snackbar',
           onPressed: () {
             Navigator.of(context).pushReplacement(MaterialPageRoute(
-                builder: (context) => HomeBar(
+                builder: (context) => const HomeBar(
                       title: '',
                     )));
           },
         ),
         centerTitle: true,
-        title: Text(
+        title: const Text(
           "Contacts",
           style: TextStyle(
             fontFamily: "Montserrat",
@@ -123,8 +123,8 @@ class _PhoneScreenState extends State<PhoneScreen> {
         // ),
       ),
       body: isLoading
-          ? Center(
-              child: CircularProgressIndicator(),
+          ? const Center(
+              child:  CircularProgressIndicator(),
             )
           : Padding(
               padding: const EdgeInsets.all(10),
@@ -136,8 +136,8 @@ class _PhoneScreenState extends State<PhoneScreen> {
                             itemCount: foundUsers.length,
                             itemBuilder: (context, index) {
                               if (isLoading) {
-                                return Center(
-                                  child: CircularProgressIndicator(),
+                                return const Center(
+                                  child:  CircularProgressIndicator(),
                                 );
                               } else {
                                 return ListTile(
@@ -219,7 +219,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                             itemCount: contacts.length,
                             itemBuilder: (context, index) {
                               if (isLoading) {
-                                return Center(
+                                return const Center(
                                   child: CircularProgressIndicator(),
                                 );
                               } else {
@@ -231,7 +231,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                                     decoration: BoxDecoration(
                                       border: Border.all(
                                           color:
-                                              Color.fromRGBO(50, 50, 93, 0.25),
+                                              const Color.fromRGBO(50, 50, 93, 0.25),
                                           width: 2),
                                       boxShadow: [
                                         BoxShadow(
@@ -309,7 +309,7 @@ class _PhoneScreenState extends State<PhoneScreen> {
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(10),
                 ),
-                padding: EdgeInsets.fromLTRB(10, 18, 10, 18),
+                padding: const EdgeInsets.fromLTRB(10, 18, 10, 18),
                 child: const Text(
                   'Import Contact',
                   style: TextStyle(

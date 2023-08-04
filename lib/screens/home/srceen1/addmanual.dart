@@ -94,6 +94,8 @@ import 'package:brew_crew/screens/home/homescreen.dart';
 import 'package:brew_crew/screens/home/client.dart';
 import 'package:brew_crew/screens/home/phone.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:email_validator/email_validator.dart';
+
 
 class manual extends StatefulWidget {
   manual({super.key});
@@ -113,12 +115,25 @@ class _manualState extends State<manual> {
 
   getName(String value) => {this.name = value};
 
-  getPhoneNo(String value) => {this.phoneNo = int.parse(value)};
+  getPhoneNo(String value) {
+    this.phoneNo = int.parse(value);
+
+    }
 
   getEmail(String value) => {this.email = value};
 
   getNotes(String value) => {this.notes = value};
 
+  bool isnumeric(String value){
+    if (value == null || value.isEmpty){
+      return false;
+    }
+    final number = num.tryParse(value);
+    if (number == null){
+      return false;
+    }
+    return true;
+  }
   createlead() async {
     DateTime dateTime = DateTime.now();
     String formattedDate = DateFormat('d MMMM h:mm a').format(dateTime);
@@ -197,7 +212,7 @@ class _manualState extends State<manual> {
                           borderSide:
                               BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
-                        hintText: 'Enter a search term',
+                        hintText: 'Enter Client Name',
                         hintStyle: TextStyle(
                           fontFamily: "Montserrat",
                         ),
@@ -227,15 +242,17 @@ class _manualState extends State<manual> {
                     child: TextFormField(
                       validator: (value) {
                         // Check if value is valid phone number with 10 digits
-                        if (value == null || value.isEmpty) {
+                        if (value == null || value.isEmpty || !isnumeric(value)) {
                           return 'Please enter a phone number';
                         } else if (value.length != 10) {
                           return 'Phone number must be 10 digits';
                         }
                         return null;
                       },
-                      onSaved: (value) {
-                        getPhoneNo(value!);
+                      onChanged: (value) {
+                        if (isnumeric(value)){
+                            getPhoneNo(value);
+                        }
                       },
                       decoration: InputDecoration(
                         border: OutlineInputBorder(),
@@ -284,12 +301,16 @@ class _manualState extends State<manual> {
                       validator: (value) {
                         if (value!.isEmpty) {
                           return "Required";
-                        } else {
+                        } 
+                        else if (!EmailValidator.validate(value)){
+                          return "Invalid Email";
+                        }
+                        else {
                           return null;
                         }
                       },
                       onChanged: (value) {
-                        getEmail(value);
+                        getEmail(value);  
                       },
                       decoration: InputDecoration(
                           border: OutlineInputBorder(),

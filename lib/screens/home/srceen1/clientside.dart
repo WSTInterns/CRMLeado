@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'hot_lead.dart';
 import 'package:flutter/src/material/dropdown.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 // class MyAppShrey extends StatelessWidget {
 //    const MyAppShrey({Key? key}) : super(key: key);
@@ -26,7 +27,7 @@ class HomePage extends StatefulWidget {
 //  String  name, email,phone;
   // const HomePage({Key? key, required this.title});
   ///Homepage({required this.name,required this.email,required this.phone});
-  const HomePage(
+   HomePage(
       {Key? key,
       required this.title,
       required this.email,
@@ -38,6 +39,7 @@ class HomePage extends StatefulWidget {
   final String salesnamefinal;
   final int phone;
   final String email;
+  
   @override
   State<HomePage> createState() => _HomePageState();
 }
@@ -48,7 +50,7 @@ class _HomePageState extends State<HomePage> {
   final List<String> _products = ['Product A', 'Product B', 'Product C'];
   Map<String, dynamic> formDetails = {};
   final formGlobalKey = GlobalKey<FormState>();
-
+final User? user = FirebaseAuth.instance.currentUser;
   @override
   void initState() {
     super.initState();
@@ -67,6 +69,7 @@ class _HomePageState extends State<HomePage> {
       "category": category,
       "product_name": _selectedProduct,
       "quantity": quantity,
+      "uid":user?.uid
     };
     documentReference.set(details).whenComplete(() => {print("created")});
   }
@@ -129,7 +132,8 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                       child: TextFormField(
-                        enabled: true,
+                        enabled: false,
+                        initialValue: widget.salesnamefinal,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
@@ -157,6 +161,7 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                       child: TextFormField(
+                        initialValue: widget.phone.toString(),
                         validator: (value) {
                           // Check if value is valid phone number with 10 digits
                           if (value == null || value.isEmpty) {
@@ -166,7 +171,7 @@ class _HomePageState extends State<HomePage> {
                           }
                           return null;
                         },
-                        enabled: true,
+                        enabled: false,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
@@ -194,14 +199,15 @@ class _HomePageState extends State<HomePage> {
                     Padding(
                       padding: EdgeInsets.symmetric(horizontal: 8, vertical: 6),
                       child: TextFormField(
-                        enabled: true,
+                        enabled: false,
+                        initialValue: widget.email,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(),
                           focusedBorder: OutlineInputBorder(
                             borderSide:
                                 BorderSide(width: 4, color: Color(0xffD9ACF5)),
                           ),
-                          hintText: widget.email,
+                          hintText: "widget.email",
                         ),
                         onChanged: (value) =>
                             formDetails['email'] = value.trim(),

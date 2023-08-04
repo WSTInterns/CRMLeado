@@ -7,8 +7,9 @@ import 'package:intl/intl.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 class MyStepperForm extends StatefulWidget {
-  MyStepperForm({Key? key, required this.email}) : super(key: key);
+  MyStepperForm({Key? key, required this.email,this.cname = ''});
   String email;
+  String cname;
   @override
   State<MyStepperForm> createState() => _MyStepperFormState();
 }
@@ -85,8 +86,10 @@ class _MyStepperFormState extends State<MyStepperForm> {
     var platformDetails = NotificationDetails(android: androidDetails);
     flutterLocalNotificationsPlugin.schedule(
         0, // notification id
-        'Reminder', // notification title
-        'Your activity is coming up in 1 hour', // notification body
+        '${activity.toString()} ${widget.cname}', // notification title
+        // Your activity is coming up in 1 hour\nNOTE:-${note.toString()}\n 
+        'You have to ${activity.toString()} ${widget.cname} in the 1 hour \n Note:- ${note}', // notification body
+        // 'You have to ${activity.toString()} ${widget.cname} in the 1 hour', // notification body
         notificationTime, // notification time
         platformDetails);
 
@@ -179,7 +182,7 @@ class _MyStepperFormState extends State<MyStepperForm> {
                           borderSide:
                               BorderSide(width: 2.5, color: Color(0xffD9ACF5)),
                         ),
-                        hintText: 'Select an Acticity',
+                        hintText: 'Select an Activity',
                       ),
                       items: <String>['Phone Call', 'Message', 'Meet', 'Note']
                           .map<DropdownMenuItem<String>>((String value) {

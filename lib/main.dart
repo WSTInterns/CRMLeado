@@ -4,15 +4,16 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:provider/provider.dart';
 import 'models/firebaseuser.dart';
-import 'services/auth.dart';
+import 'services/auth.dart';    
 import 'screens/home/start_screen.dart';
 
 
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
+  WidgetsFlutterBinding.ensureInitialized();  
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  debugPrintRebuildDirtyWidgets = false;
+  runApp(const MyApp(   ));
 }
 
 Map<int, Color> color = {
